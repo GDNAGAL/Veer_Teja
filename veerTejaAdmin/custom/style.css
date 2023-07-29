@@ -1,0 +1,21 @@
+.alertimage{
+    text-align: center;
+    background-color: #4bc48c;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .alertimage img{
+    margin: auto;
+  }
+  .ct{
+    text-align: center;
+    color: #4bc48c;
+  }
+  .ct button{
+    padding: 8px 20px;
+    background-color: #4bc48c;
+    color:  #095531;
+    border-radius: 40px;
+    border: none;
+  }

@@ -1,0 +1,429 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-marron : #880000;
+    --color-white: #fff;
+    --color-orange: #EF194C;
+}
+::-webkit-scrollbar{
+    /* color: white; */
+    background-color: var(--color-white);
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb{
+    background-color: var(--color-orange);
+
+  }
+
+  /* header nav */
+  header .navbar{
+    background-color: var(--color-orange);
+  }
+
+  header .navbar .navbar-collapse .navbar-nav .nav-item .nav-link{
+    padding: 10px 18px;
+    color: var(--color-white);
+  }
+
+header{
+    
+    /* background-color: var(--color-marron); */
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.068);
+}
+
+
+/* hero section */
+
+
+
+
+  
+ 
+  /* For bottom nav only */
+
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    will-change: transform;
+    transform: translateZ(0);
+    display: flex;
+    height: 50px;
+    box-shadow: 0 -2px 5px -2px #333;
+    background-color: #fff;
+  }
+  .mobile-bottom-nav__item {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .mobile-bottom-nav__item--active {
+    color: var(--color-orange);
+  }
+  .mobile-bottom-nav__item-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* For bottom nav only */
+
+
+ /* footer */
+ footer{
+    background-color: var(--color-orange);
+    margin-bottom: 60px;
+    padding: 10px 18px;
+ }
+
+ footer .social-link{
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    color: var(--color-white);
+ }
+ footer .social-link i{
+    padding: 10px 12px;
+    color: var(--color-orange);
+    background-color: var(--color-white);
+border-radius: 10%;
+ }
+
+
+
+ /* footer */
+ 
+/* hero section */
+
+.hero-section .card{
+    padding: 10px 0px 20px 0px;
+}
+.hero-section .card:hover{
+    padding: 30px 0px 40px 0px;
+    width: 100%;
+}
+
+.product-card {
+    /* box-shadow: 0 2px 7px var(--color-orange); */
+    margin: 20px auto;
+    background: #f9f6f6;
+    /* border: 1px solid var(--color-orange); */
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-orange);
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+
+
+}
+.product-card .product-details h4{
+    font-weight: 700;
+    color: var(--color-orange);
+}
+
+
+
+
+.product-tumb {
+    background: #f0f0f0;
+}
+
+.product-tumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.product-details {
+    padding: 10px 15px !important;
+}
+
+.product-catagory {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ccc;
+    margin-bottom: 18px;
+}
+
+.product-details h4 a {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+    color: #363636;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.product-details h4 a:hover {
+    color: #fbb72c;
+}
+
+.product-details p {
+    font-size: 15px;
+    line-height: 22px;
+    margin-bottom: 18px;
+    color: #999;
+}
+
+.product-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+.ticket-booking-btn{
+    width: 100%;
+    background-color: var(--color-orange);
+    padding: 10px 14px;
+    text-align: center;
+
+
+}
+.product-details a{
+    border: none;
+    color: var(--color-white);
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.product-price {
+    font-size: 18px;
+    color: #fbb72c;
+    font-weight: 600;
+}
+
+
+
+.product-links {
+    text-align: right;
+}
+
+.product-links a {
+    display: inline-block;
+    margin-left: 5px;
+    color: #e1e1e1;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.product-links a:hover {
+    color: #fbb72c;
+}
+
+/* timer section */
+.timer-section .card{
+    border: none;
+    /* background-color: var(--color-orange); */
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    background: #f9f6f6;
+
+    color: var(--color-orange);
+}
+
+/* timer section */
+
+
+/* timer clock */
+
+
+
+.timer{
+    border: 1px solid var(--Primary-Color);
+    display: flex;
+    margin: auto;
+    box-sizing: border-box;
+    justify-content: center;
+    background-color: var(--Primary-Color);
+    border-radius: 3px;
+}
+.timer .part{
+    padding: 5px 9px;
+    width: 60px;
+    /* font-size: 28px; */
+    background-color: var(--Primary-Color);
+    color: var(--white);
+    border-radius: 5px;
+    margin: 3px;
+    font-family:'Arial Black, Helvetica, sans-serif';
+    font-weight: bold;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    text-align: center;
+}
+.timer .part hr{
+    margin: 0px;
+}
+.timer .part span{
+    font-size: 10px;
+    margin-top: 0px;
+}
+.timer .part .num{
+    font-size: 28px;
+}
+
+/* timer clock */
+
+
+/* verify-ticket */
+
+
+ fieldset{
+    margin-top: 15px;
+    border: none !important;
+    
+}
+fieldset input{
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 10px;
+    border: 1px solid var(--Primary-Color);
+    border-radius: 3px;
+    color: var(--Primary-Color);
+}
+fieldset legend {
+    /* background-color: var(--Secondary-Color); */
+    padding: 3px 6px;
+    font-weight: 600;
+    color: var(--color-orange);
+    font-size: 20px;
+}
+.verify-ticket .product-card form button{
+    width: 100%;
+    padding: 10px 10px;
+    background-color: var(--color-orange);
+    border: none;
+    color: var(--color-white);
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.verify-ticket .product-card h4{
+    padding-top: 10px;
+    padding-left: 20px;
+    font-weight: 600;
+    color: var(--color-orange);
+    font-size: 20px;
+}
+
+
+/* verify-ticket */
+
+.bookingdetails-section .heading{
+    background-color: var(--color-orange);
+    color: var(--color-white);
+    padding: 10px 12px;
+}
+
+
+  .bookingdetails-section form input,
+  .bookingdetails-section form select{
+    border-radius: 0px;
+  }
+  .bookingdetails-section form input:focus{
+    box-shadow: none;
+  }
+  .bookingdetails-section form select:focus{
+    box-shadow: none;
+  }
+  
+  .bookingdetails-section form .save{
+    background-color: var(--color-orange);
+    color: #fff;
+    padding: 12px 30px;
+    text-decoration: none;
+    float: right;
+    margin-bottom: 10px;
+  }
+  .bookingdetails-section form select option{
+   background-color: var(--color-orange);
+   color: var(--color-white);
+ }
+/* verify-ticket */
+
+/* payment */
+
+.payment-section .payment-box{
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px 30px;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.15);
+    
+
+
+}
+.payment-section .payment-box h1{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: .2px;
+    color: #212121;
+}
+.payment-section .payment-box span{
+    display: inline-block;
+    position: relative;
+    font-size: 16px;
+
+}
+.payment-section .payment-box span:before{
+        right: 100%;
+}
+
+.payment-section .payment-box span:before{
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid #bdbdbd;
+    top: 8px;
+    width: 151px;
+    margin-right: 10px;
+}
+.payment-section .payment-box span:after{
+    content: "";
+    position: absolute;
+    height: 5px;
+    border-bottom: 1px solid #bdbdbd;
+    top: 8px;
+    width: 151px;
+    margin-left: 10px;
+
+
+}
+.payment-section .payment-box form input:focus{
+    box-shadow: none;
+  }
+  .payment-section .payment-box form input:focus{
+    border: 2px solid var(--color-orange);
+  }
+.payment-section .payment-box form .pro{
+    background-color: var(--color-orange);
+    padding: 10px 14px;
+    text-decoration: none;
+    color: var(--color-white);
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    
+}
+.payment-section .payment-box img{
+    width: 70%;
+    height: 30vh;
+    
+}
