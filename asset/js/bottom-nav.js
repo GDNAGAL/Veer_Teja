@@ -32,12 +32,9 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
     
   // Output the result in an element
-  document.getElementById("timer").innerHTML = 
-  `<div class="part" id="day"><span class='num'>${setzero(days)}</span> <hr><span>Days</span></div>
-  <div class="part" id="day"><span class='num'>${setzero(hours)}</span> <hr><span>Hours</span></div>
-  <div class="part" id="day"><span class='num'>${setzero(minutes)}</span> <hr><span>Minutes</span></div>
-  <div class="part" id="day"><span class='num'>${setzero(seconds)}</span> <hr><span>Seconds</span></div>`;
-
+  document.querySelectorAll('[id="timer"]').forEach(element => {
+    element.innerHTML = `${setzero(days)} Days ${setzero(hours)} Hours ${setzero(minutes)} Minutes ${setzero(seconds)} Seconds`;
+  })
   //set zero on singal digit
   function setzero(id){
     if(id<10){

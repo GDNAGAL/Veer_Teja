@@ -2,5 +2,8 @@
 .product-card {
     margin: 20px 5px;
 }
-    
+.heading{
+    font-size: 18px;
+    line-height: 60px;
+}  
 }

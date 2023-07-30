@@ -51,8 +51,8 @@
         input[type=number] {
             -moz-appearance: textfield;
         }
-        td {
-          height:auto;
+td {
+  height:auto;
   vertical-align: middle !important;
 }
   </style>
