@@ -92,7 +92,7 @@
           <!-- small box -->
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>44</h3>
+              <h3><?php echo mysqli_num_rows (mysqli_query($conn, "SELECT * FROM `tbl_tokens`")); ?></h3>
 
               <p>Total Ticket Sale</p>
             </div>
@@ -107,12 +107,12 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>65</h3>
+              <h3><?php echo mysqli_num_rows (mysqli_query($conn, "SELECT * FROM `agents`")); ?></h3>
 
-              <p>Amount Collected</p>
+              <p>Token Order Request</p>
             </div>
             <div class="icon">
-              <i class="fa fa-money"></i>
+              <i class="fa fa-ticket"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -122,11 +122,84 @@
       <!-- /.row -->
       <!-- Main row -->
      
+
+ <!-- TABLE: LATEST ORDERS -->
+ <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Latest Orders</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="table-responsive">
+                <table class="table no-margin">
+                  <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Item</th>
+                    <th>Status</th>
+                    <th>Popularity</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
+                    <td>Call of Duty IV</td>
+                    <td><span class="label label-success">Shipped</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                    <td>Samsung Smart TV</td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                    <td>iPhone 6 Plus</td>
+                    <td><span class="label label-danger">Delivered</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
+                    <td>Samsung Smart TV</td>
+                    <td><span class="label label-info">Processing</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
+                    <td>Samsung Smart TV</td>
+                    <td><span class="label label-warning">Pending</span></td>
+                    <td>
+                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
+                    </td>
+                  </tr>
+      
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.table-responsive -->
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+            </div>
+            <!-- /.box-footer -->
+          </div>
+
       <!-- /.row (main row) -->
 
     </section>
     <!-- /.content -->
   </div>
+  
   <!-- /.content-wrapper -->
 <?php require("includes/footer.php");?>
 </div>

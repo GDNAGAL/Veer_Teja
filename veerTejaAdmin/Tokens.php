@@ -141,7 +141,14 @@ $.ajax({
               }  },
              { 'data': 'member_id' },
              { 'data': 'amount' },
-             { 'data': 'type'},
+             { 'data': 'type',
+              "render": function ( data, type, row, meta ) {
+                if(data=="PAID"){
+                  return '<span class="label label-success">'+data+'</span>';
+                }else{
+                  return '<span class="label label-warning">'+data+'</span>';
+                }
+              }  },
             { 'data': 'agent' },
           
             

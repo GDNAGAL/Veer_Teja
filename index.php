@@ -42,8 +42,8 @@ include("veerTejaAdmin/includes/connection.php");
                         <span class='product-catagory' id='timer'></span>
                         <h4> ₹ $row[price]/- </h4>
                         <p>$row[text]</p>
-                        <div class='ticket-booking-btn'>
-                          <a href='bookingDetails'>Book Ticket ( टिकट ख़रीदे )</a>
+                        <div id='bookbtn'>
+                          
                         </div>
         
                       </div>
@@ -108,7 +108,21 @@ include("veerTejaAdmin/includes/connection.php");
 </section>
 
 <!--  -->
+<footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="social-link">
+             <a href="https://www.facebook.com/profile.php?id=100095074703306"><i class="fa-brands fa-facebook"></i></a>
+             <a href="https://www.instagram.com/veer_teja_lucky_draw/"><i class="fa-brands fa-instagram"></i></a>
+             <a href="#"><i class="fa-brands fa-twitter"></i></a>
+             <a href="https://wa.me/918619372377" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
+    </footer>
 
 
 

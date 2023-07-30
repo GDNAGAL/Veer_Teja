@@ -23,7 +23,7 @@
                   <a class="nav-link active" aria-current="page" href="index">होम</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">टिकट सत्यापित करें</a>
+                  <a class="nav-link" href="verifyToken">टिकट सत्यापित करें</a>
                 </li>
               
                 <li class="nav-item">

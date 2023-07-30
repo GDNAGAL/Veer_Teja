@@ -67,7 +67,12 @@ header{
     justify-content: center;
     cursor: pointer;
   }
-  .mobile-bottom-nav__item--active {
+  .mobile-bottom-nav__item a{
+    text-decoration: none;
+    color: black;
+  }
+  .mobile-bottom-nav__item-content:hover{
+    text-decoration: none;
     color: var(--color-orange);
   }
   .mobile-bottom-nav__item-content {
@@ -188,11 +193,17 @@ border-radius: 10%;
     background-color: var(--color-orange);
     padding: 10px 14px;
     text-align: center;
-
-
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 .ticket-booking-btn:hover{
     opacity: 0.8;
+}
+.ticket-booking-btn:disabled{
+    background-color: #999;
+    color: black;
+    cursor: not-allowed;
 }
 .product-details a{
     border: none;
@@ -345,13 +356,15 @@ fieldset legend {
     box-shadow: none;
   }
   
-  .bookingdetails-section form .save{
+ .save{
     background-color: var(--color-orange);
     color: #fff;
-    padding: 12px 30px;
+    padding: 10px 30px;
     text-decoration: none;
     float: right;
     margin-bottom: 10px;
+    border:none;
+    width: 100%;
   }
   .bookingdetails-section form select option{
    background-color: var(--color-orange);
@@ -435,4 +448,15 @@ marquee{
     font-size: 22px;
     padding-top: 10px;
     color: green;
+}
+.booktoken{
+    color: var(--color-orange);
+    font-weight: bold;
+}
+.copy{
+    border:none;
+    background-color: #1a73e8ff;
+    color: white;
+    padding: 3px 10px;
+    font-size: 12px;
 }

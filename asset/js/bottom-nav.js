@@ -9,7 +9,7 @@ navItems.forEach(function(e, i) {
 });
 
 // Set the date we're counting down to
-var countDownDate = new Date("Aug 29, 2023 12:00:00");
+var countDownDate = new Date("Aug 30, 2023 17:05:00");
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -35,6 +35,8 @@ var x = setInterval(function() {
   document.querySelectorAll('[id="timer"]').forEach(element => {
     element.innerHTML = `${setzero(days)} Days ${setzero(hours)} Hours ${setzero(minutes)} Minutes ${setzero(seconds)} Seconds`;
   })
+
+ 
   //set zero on singal digit
   function setzero(id){
     if(id<10){
@@ -47,6 +49,18 @@ var x = setInterval(function() {
   // If the count down is over, write some text 
   if (distance < 0) {
     clearInterval(x);
+    document.querySelectorAll('[id="timer"]').forEach(element => {
+      element.innerHTML = `Booking Closed`;
+    })
+    //disable button
+    document.querySelectorAll('[id="bookbtn"]').forEach(element => {
+      element.innerHTML = "<button class='ticket-booking-btn' disabled>Booking Closed</button>";
+    })
     //document.getElementById("demo").innerHTML = "EXPIRED";
+  }else{
+     //book button show 
+  document.querySelectorAll('[id="bookbtn"]').forEach(element => {
+    element.innerHTML = "<a href='bookingDetails'><button class='ticket-booking-btn'>Book Token ( टोकन ख़रीदे )</button></a>";
+  })
   }
 }, 1000);
