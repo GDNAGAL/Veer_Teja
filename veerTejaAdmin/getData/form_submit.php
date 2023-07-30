@@ -96,4 +96,29 @@ if ($addoffer==True) {
 }
 
 }
+
+
+
+
+//Add New Member and Tokens
+//Add Agent 
+if (isset($_POST['addmember'])) {
+	$membername = $_POST['membername'];
+	$fathername = $_POST['fathername'];
+	$mobile = $_POST['mobile'];
+	$district = $_POST['district'];
+	$agents = $_POST['agents'];
+	$idtype = $_POST['idtype'];
+	$idno = $_POST['idno'];
+	$offerchhose = $_POST['offerchoose'];
+
+$addmember = mysqli_query($conn, "INSERT INTO `tbl_members`(`member_name`, `father_name`, `mobile`, `district`, `id_type`, `id_number`) VALUES
+ ('$membername','$fathername','$mobile','$district','$idtype','$idno')");
+if ($addmember==True) {
+	echo 1;
+}else{
+	echo 0;
+}
+
+}
 ?>

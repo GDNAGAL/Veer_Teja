@@ -65,14 +65,13 @@
             <!-- /.box-header -->
 
             <div class="box-body">
-              <table id="studenttable" class="table table-bordered table-striped">
+              <table id="membertables" class="table table-bordered table-striped" style='text-transform:capitalize;'>
                 <thead>
                 <tr>
-                  <th>#</th>
                   <th>Member Name</th>
                   <th>Father Name</th>
                   <th>District</th>
-                  <th>Mobile No.</th>
+                  <th class='text-center'>Mobile No.</th>
                   <th>ID Type</th>
                   <th>ID Number</th>
                   <th>Agent</th>
@@ -116,55 +115,39 @@
 <script>
 
  $( document ).ready(function() {
-  var table = $('#studenttable').DataTable();
-
-$('#selectclass').on('change', function(){
-   var table = $('#studenttable').DataTable();
-   //clear datatable
-   table.clear().draw();
-   //destroy datatable
-   table.destroy();
-   //call funtion for get student data from database
-   getstudents($(this).val())
-})
+  // var table = $('#membertables').DataTable();
+  getmembers();
 
 //function for get data from database
-function getstudents(cls){
-const dataa = {cls : cls};
+function getmembers(){
 $.ajax({
-    "url": "getData/get_Students.php",
+    "url": "getData/get_Members.php",
     "type": "POST",
-    "data": dataa,
     "datatype": 'json',
     "success": function (data) {
         //console.log(data)
        if (data == 'null') {
-        var table = $('#studenttable').DataTable();
+        //var table = $('#membertables').DataTable();
           return ;
        }else{
 
          data = JSON.parse(data);  // Parse the JSON strin
-         var table = $('#studenttable').DataTable({
+         var table = $('#membertables').DataTable({
            data: data.data,  // Get the data object
            retrieve: true,
-           destroy: true,
+          //  destroy: true,
            columns: [
-             { 'data': 'class_name' },
-             { 'data': 'rollno' },
-             { 'data': 'admissionno' },
-             { 'data': 'student_name',
+             { 'data': 'member_name',
               "render": function ( data, type, row, meta ) {
                 return '<a href="">'+data+'</a>';
-              } 
-            },
-            { 'data': 'father_name' },
-            { 'data': 'mother_name' },
-            { 'data': 'dateofbirth' },
-            { 'data': 'gender' },
-            { 'data': 'category' },
-            { 'data': 'mobile' },
-            { 'data': 'aadhar' },
-            
+              }  },
+             { 'data': 'father_name' },
+             { 'data': 'district' },
+             { 'data': 'mobile'},
+            { 'data': 'id_type' },
+            { 'data': 'id_number' },
+            { 'data': 'id_number' },
+          
             
           ]
         })

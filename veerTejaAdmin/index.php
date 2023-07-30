@@ -76,7 +76,7 @@
           <div class="small-box bg-green">
             <div class="inner">
               <h3>
-                3
+              <?php echo mysqli_num_rows (mysqli_query($conn, "SELECT * FROM `tbl_members`")); ?>
               </h3>
 
               <p>Members</p>

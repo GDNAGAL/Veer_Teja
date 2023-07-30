@@ -70,7 +70,7 @@ input::-webkit-inner-spin-button {
         <!-- /.box-header -->
         <div class="box-body">
           <div class="row">
-            <form action="" method="post" id="addstudentform" autocomplete="off">
+            <form method="post" id="addmember" autocomplete="off">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Member Name :</label>
@@ -86,7 +86,7 @@ input::-webkit-inner-spin-button {
               </div>
                 <div class="form-group">
                 <label>District :</label>
-                <select class="form-control" style="width: 100%;" name="district">
+                <select class="form-control" style="width: 100%;" name="district" required>
                   <option selected="selected" value="">Select District</option>
                   <option>Ajmer (अजमेर)</option>
                   <option>Alwar (अलवर)</option>
@@ -129,7 +129,7 @@ input::-webkit-inner-spin-button {
             <div class="col-md-6">
             <div class="form-group">
                 <label>Select Agent :</label>
-                <select class="form-control" id="selectclass" style="width: 100%;" name="studentclass" required>
+                <select class="form-control" id="selectclass" style="width: 100%;" name="agents" required>
                   <option selected="selected" value="0">No Agent</option>
                   <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `agents`");
@@ -143,7 +143,7 @@ input::-webkit-inner-spin-button {
               
               <div class="form-group">
                 <label>Select ID Type :</label>
-                <select class="form-control" style="width: 100%;" name="gender" required>
+                <select class="form-control" style="width: 100%;" name="idtype" >
                   <option selected="selected" value="">Select ID Type</option>
                   <option>Aadhar Card</option>
                   <option>PAN Card</option>
@@ -152,7 +152,7 @@ input::-webkit-inner-spin-button {
               </div>
               <div class="form-group">
                 <label>ID Number :</label>
-                <input type="number" class="form-control" placeholder="Enter Mobile Number" name="mobile">
+                <input type="number" class="form-control" placeholder="Enter Mobile Number" name="idno">
               </div>
               <div class="form-group">
                 <label>Select Offer :</label>
@@ -161,7 +161,7 @@ input::-webkit-inner-spin-button {
                   <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `tbl_token_offer`");
                   while($row=mysqli_fetch_assoc($sql)){
-                    echo "<option value=''>Buy $row[buy] - Get $row[free] Free - $row[price]</option>";
+                    echo "<option value='$row[Id]'>Buy $row[buy] - Get $row[free] Free - $row[price]</option>";
                   }
                   ?>
                 </select>
@@ -174,7 +174,7 @@ input::-webkit-inner-spin-button {
           <div class="row">
 
               <div class="col-md-6" style='display:flex'>
-                  <button class="btn btn-flat btn-success" name="addstudent" id="addstudent">Save Information</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button class="btn btn-flat btn-success" name="addmember">Save Information</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <strong style='padding-top:4px; font-size:20px' id='total'></strong>
                 </div>
             </div>

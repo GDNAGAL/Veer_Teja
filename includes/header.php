@@ -7,7 +7,7 @@
                                 <img src="./asset/img/v2.png" alt="" width="90" height="90">
                             </a>
                           </div>
-                          <h1 class="heading">Jai Veer Teja Lucky Draw, Nagour </h1>
+                          <h1 class="heading">Jai Veer Teja Lucky Draw, Nagaur </h1>
                 </div>
                
             </div>
