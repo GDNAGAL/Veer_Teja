@@ -73,6 +73,19 @@ input::-webkit-inner-spin-button {
             <form method="post" id="addmember" autocomplete="off">
             <div class="col-md-6">
               <div class="form-group">
+                <label>Token No. :</label>
+                <?php
+                error_reporting(0);
+                $token=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `token_no` FROM `tbl_tokens` ORDER by `token_no` DESC limit 1"));
+                if($token['token_no']<1){
+                 echo "<input type='text' class='form-control' placeholder='Enter Token No.' name='tokenno' required>";
+                }else{
+                  $token = $token['token_no']+1;
+                  echo "<input type='text' class='form-control' placeholder='Enter Token No.' value='$token' name='tokenno' required readonly>";
+                }
+                ?>
+              </div>
+              <div class="form-group">
                 <label>Member Name :</label>
                 <input type="text" class="form-control" placeholder="Enter Member Name" name="membername" required>
               </div>
@@ -174,7 +187,7 @@ input::-webkit-inner-spin-button {
           <div class="row">
 
               <div class="col-md-6" style='display:flex'>
-                  <button class="btn btn-flat btn-success" name="addmember">Save Information</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <button class="btn btn-flat btn-success" id='addmembebtn' name="addmember">Save Information</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                   <strong style='padding-top:4px; font-size:20px' id='total'></strong>
                 </div>
             </div>

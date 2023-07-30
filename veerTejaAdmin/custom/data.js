@@ -44,6 +44,9 @@ function agent_table_data(){
 // Add New Member
 $('#addmember').on('submit', function(e){
   e.preventDefault();
+  $("#addmembebtn").attr("disabled", true);
+  $("#addmembebtn").html("Saving...");
+
   let data = new FormData(this);
       data.append(event.submitter.name, event.submitter.value);
       $.ajax({

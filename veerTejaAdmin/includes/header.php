@@ -318,6 +318,14 @@
           </a>
         </li>
         <li class="treeview">
+          <a href="" onclick="window.open('Tokens','_self')">
+            <i class="fa fa-ticket"></i>
+            <span>Tokens</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
           <a href="" onclick="window.open('TokenOffer','_self')">
             <i class="fa fa-gift"></i>
             <span>Token Offers</span>

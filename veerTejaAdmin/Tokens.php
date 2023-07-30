@@ -53,7 +53,7 @@
   <div class="content-wrapper">
   <section class="content-header">
       <h1>
-        Members 
+        Tokens 
         <small>Data</small>
       </h1>
      
@@ -68,12 +68,10 @@
               <table id="membertables" class="table table-bordered table-striped" style='text-transform:capitalize;'>
                 <thead>
                 <tr>
+                  <th>Token No.</th>
                   <th>Member Name</th>
-                  <th>Father Name</th>
-                  <th>District</th>
-                  <th class='text-center'>Mobile No.</th>
-                  <th>ID Type</th>
-                  <th>ID Number</th>
+                  <th>Amount</th>
+                  <th>TAG</th>
                   <th>Agent</th>
                 </tr>
                 </thead>
@@ -121,7 +119,7 @@
 //function for get data from database
 function getmembers(){
 $.ajax({
-    "url": "getData/get_Members.php",
+    "url": "getData/get_Tokenslist.php",
     "type": "POST",
     "datatype": 'json',
     "success": function (data) {
@@ -137,16 +135,14 @@ $.ajax({
            retrieve: true,
           //  destroy: true,
            columns: [
-             { 'data': 'member_name',
+             { 'data': 'token_no',
               "render": function ( data, type, row, meta ) {
                 return '<a href="">'+data+'</a>';
               }  },
-             { 'data': 'father_name' },
-             { 'data': 'district' },
-             { 'data': 'mobile'},
-            { 'data': 'id_type' },
-            { 'data': 'id_number' },
-            { 'data': 'agent_name' },
+             { 'data': 'member_id' },
+             { 'data': 'amount' },
+             { 'data': 'type'},
+            { 'data': 'agent' },
           
             
           ]

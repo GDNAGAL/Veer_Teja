@@ -111,17 +111,32 @@ if (isset($_POST['addmember'])) {
 	$idno = $_POST['idno'];
 	$offerchhose = $_POST['offerchoose'];
 
-	$getofferdetails = mysqli_query($conn, "SELECT * FROM `tbl_token_offer` WHERE `Id` = $offerchhose");
-	while($row=mysqli_fetch_assoc($getofferdetails)){
-		$free = $row['free'];
-		$paid = $row['buy'];
-		$price = $row['price']/$paid;
-	}
+	$getofferdetails=mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbl_token_offer` WHERE `Id` = $offerchhose"));
+	$free = $getofferdetails['free'];
+	$paid = $getofferdetails['buy'];
+	$price = round($getofferdetails['price']/$paid);
+	
 	// GEt offer details
+//Add Member Query	
+$addmember = mysqli_query($conn, "INSERT INTO `tbl_members`(`member_name`, `father_name`, `mobile`, `district`, `id_type`, `id_number`, `agent`) VALUES ('$membername','$fathername','$mobile','$district','$idtype','$idno','$agents')");
+//find member id
+$findmemberid=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `id` FROM `tbl_members` ORDER by `id` DESC limit 1"));
+$memberid = $findmemberid['id'];
 
-$addmember = mysqli_query($conn, "INSERT INTO `tbl_members`(`member_name`, `father_name`, `mobile`, `district`, `id_type`, `id_number`) VALUES
- ('$membername','$fathername','$mobile','$district','$idtype','$idno')");
-if ($addmember==True) {
+$tokenno = $_POST['tokenno'];
+//Inset Token Data
+for($i=1; $i<=$paid; $i++ ){
+	$addpaidtoken = mysqli_query($conn, "INSERT INTO `tbl_tokens` (`token_no`, `member_id`, `amount`, `type`) VALUES ('$tokenno', '$memberid', '$price', 'PAID');");
+	$tokenno = $tokenno+1;
+}
+if($free!==0){
+	for($i=1; $i<=$free; $i++ ){
+		$addfreetoken = mysqli_query($conn, "INSERT INTO `tbl_tokens` (`token_no`, `member_id`, `amount`, `type`) VALUES ('$tokenno', '$memberid', '0', 'FREE');");
+		$tokenno = $tokenno+1;
+	}
+}
+
+if ($addpaidtoken==True) {
 	echo 1;
 }else{
 	echo 0;
