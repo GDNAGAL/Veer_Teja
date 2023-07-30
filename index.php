@@ -25,11 +25,11 @@ include("veerTejaAdmin/includes/connection.php");
 <body>
 
 <?php require("includes/header.php"); ?>
-
-   <main>
-    <section class="hero-section">
-      <div class="container">
-        <div class="row">
+<main>
+  <section class="hero-section">
+    <div class="container">
+      <div class="row">
+          <marquee behavior="" direction="">लॉटरी 15 अक्टूबर को निकाली जायेगी </marquee>
         <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `tbl_token_offer`");
                   while($row=mysqli_fetch_assoc($sql)){

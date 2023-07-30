@@ -65,7 +65,7 @@
               <p>Agents</p>
             </div>
             <div class="icon">
-            <i class="ion ion-person-add"></i>
+            <i class="ion ion-person"></i>
             </div>
             <a href="Agents" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -82,9 +82,9 @@
               <p>Members</p>
             </div>
             <div class="icon">
-            <i class="ion ion-person-add"></i>
+            <i class="fa fa-users"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="members" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -97,7 +97,7 @@
               <p>Total Ticket Sale</p>
             </div>
             <div class="icon">
-              <i class="ion ion-person-add"></i>
+              <i class="fa fa-ticket"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -112,7 +112,7 @@
               <p>Amount Collected</p>
             </div>
             <div class="icon">
-              <i class="ion ion-pie-graph"></i>
+              <i class="fa fa-money"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>

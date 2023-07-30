@@ -290,7 +290,7 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">MAIN NAVIGATION</li>
         <li class="treeview">
-          <a href="" onclick="window.open('index.php','_self')">
+          <a href="" onclick="window.open('index','_self')">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
             <span class="pull-right-container">
             </span>
@@ -311,7 +311,7 @@
         </li>
         <li class="treeview">
           <a href="" onclick="window.open('Agents','_self')">
-            <i class="fa fa-user"></i>
+            <i class="ion ion-person"></i>
             <span>Agents</span>
             <span class="pull-right-container">
             </span>

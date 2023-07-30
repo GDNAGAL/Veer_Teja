@@ -88,8 +88,39 @@ input::-webkit-inner-spin-button {
                 <label>District :</label>
                 <select class="form-control" style="width: 100%;" name="district">
                   <option selected="selected" value="">Select District</option>
-                  <option>Bikaner</option>
-                  <option>Nagour</option>
+                  <option>Ajmer (अजमेर)</option>
+                  <option>Alwar (अलवर)</option>
+                  <option>Banswara (बाँसवाड़ा)</option>
+                  <option>Baran (बारां)</option>
+                  <option>Barmer (बाड़मेर)</option>
+                  <option>Bharatpur (भरतपुर)</option>
+                  <option>Bhilwara (भीलवाड़ा)</option>
+                  <option>Bikaner (बीकानेर)</option>
+                  <option>Bundi(बूँदी)</option>
+                  <option>Chittorgarh (चित्तौड़गढ़)</option>
+                  <option>Churu (चूरू)</option>
+                  <option>Dausa (दौसा)</option>
+                  <option>Dholpur (धौलपुर)</option>
+                  <option>Dungarpur (डूंगरपुर)</option>
+                  <option>Hanumangarh (हनुमानगढ़)</option>
+                  <option>Jaipur (जयपुर)</option>
+                  <option>Jaisalmer (जैसलमेर)</option>
+                  <option>Jalore (जालौर)</option>
+                  <option>Jhalawar (झालावाड़)</option>
+                  <option>Jhunjhunu (झुन्झुनू)</option>
+                  <option>Jodhpur (जोधपुर)</option>
+                  <option>Karauli (करौली)</option>
+                  <option>Kota (कोटा)</option>
+                  <option>Nagaur (नागौर)</option>
+                  <option>Pali (पाली)</option>
+                  <option>Pratapgarh (प्रतापगढ़)</option>
+                  <option>Rajsamand (राजसमंद)</option>
+                  <option>Sawai Madhopur (सवाई माधोपुर)</option>
+                  <option>Sikar (सीकर)</option>
+                  <option>Sirohi (सिरोही)</option>
+                  <option>Sri Ganganagar (श्री गंगानगर)</option>
+                  <option>Tonk (टोंक)</option>
+                  <option>Udaipur (उदयपुर)</option>
                 </select>
               </div>
               <!-- /.form-group -->
@@ -99,7 +130,7 @@ input::-webkit-inner-spin-button {
             <div class="form-group">
                 <label>Select Agent :</label>
                 <select class="form-control" id="selectclass" style="width: 100%;" name="studentclass" required>
-                  <option selected="selected" value="">Select Agent</option>
+                  <option selected="selected" value="0">No Agent</option>
                   <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `agents`");
                   while($row=mysqli_fetch_assoc($sql)){
@@ -113,7 +144,7 @@ input::-webkit-inner-spin-button {
               <div class="form-group">
                 <label>Select ID Type :</label>
                 <select class="form-control" style="width: 100%;" name="gender" required>
-                  <option selected="selected" value="">Select Gender</option>
+                  <option selected="selected" value="">Select ID Type</option>
                   <option>Aadhar Card</option>
                   <option>PAN Card</option>
                   <option>Driving Licence</option>
@@ -125,12 +156,12 @@ input::-webkit-inner-spin-button {
               </div>
               <div class="form-group">
                 <label>Select Offer :</label>
-                <select class="form-control" style="width: 100%;" name="studentclass" required>
+                <select class="form-control" style="width: 100%;" name="offerchoose" id="offerchoose" required>
                   <option selected="selected" value="">Select Offer</option>
                   <?php
-                  $sql= mysqli_query($conn, "SELECT * FROM `agents`");
+                  $sql= mysqli_query($conn, "SELECT * FROM `tbl_token_offer`");
                   while($row=mysqli_fetch_assoc($sql)){
-                    echo "<option value=''>$row[agent_name]</option>";
+                    echo "<option value=''>Buy $row[buy] - Get $row[free] Free - $row[price]</option>";
                   }
                   ?>
                 </select>
@@ -142,8 +173,9 @@ input::-webkit-inner-spin-button {
           <!-- /.row -->
           <div class="row">
 
-              <div class="col-md-6">
-                  <button class="btn btn-flat btn-success" name="addstudent" id="addstudent">Save Information</button>
+              <div class="col-md-6" style='display:flex'>
+                  <button class="btn btn-flat btn-success" name="addstudent" id="addstudent">Save Information</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <strong style='padding-top:4px; font-size:20px' id='total'></strong>
                 </div>
             </div>
          </form>
@@ -177,6 +209,21 @@ input::-webkit-inner-spin-button {
 <script src="dist/js/demo.js"></script>
 <script src="custom/data.js"></script>
 <!-- page script -->
-
+<script>
+  $("#offerchoose").change(function(){
+    let price = $("#offerchoose option:selected" ).text().split("-");
+    
+  // convert to indian currency
+   const toIndianCurrency = (num) => {
+   const curr = num.toLocaleString('en-IN', {
+      style: 'currency',
+      currency: 'INR'
+   });
+   return curr;
+};
+    //alert(price.split("-"))
+    $("#total").html(toIndianCurrency(Number(price[2])));
+  })
+</script>
 </body>
 </html>

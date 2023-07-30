@@ -431,3 +431,8 @@ fieldset legend {
     height: 30vh;
     
 }
+marquee{
+    font-size: 22px;
+    padding-top: 10px;
+    color: green;
+}
