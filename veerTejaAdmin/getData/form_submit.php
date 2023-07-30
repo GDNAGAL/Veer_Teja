@@ -1,7 +1,7 @@
 <?php
 include("../includes/connection.php");
 include("../includes/session.php");
-//error_reporting(0);
+error_reporting(0);
 //edit Class Info
 if(isset($_POST['updateclass'])){
 	$class_id=$_POST['class_id'];
@@ -101,7 +101,6 @@ if ($addoffer==True) {
 
 
 //Add New Member and Tokens
-//Add Agent 
 if (isset($_POST['addmember'])) {
 	$membername = $_POST['membername'];
 	$fathername = $_POST['fathername'];
@@ -111,6 +110,14 @@ if (isset($_POST['addmember'])) {
 	$idtype = $_POST['idtype'];
 	$idno = $_POST['idno'];
 	$offerchhose = $_POST['offerchoose'];
+
+	$getofferdetails = mysqli_query($conn, "SELECT * FROM `tbl_token_offer` WHERE `Id` = $offerchhose");
+	while($row=mysqli_fetch_assoc($getofferdetails)){
+		$free = $row['free'];
+		$paid = $row['buy'];
+		$price = $row['price']/$paid;
+	}
+	// GEt offer details
 
 $addmember = mysqli_query($conn, "INSERT INTO `tbl_members`(`member_name`, `father_name`, `mobile`, `district`, `id_type`, `id_number`) VALUES
  ('$membername','$fathername','$mobile','$district','$idtype','$idno')");

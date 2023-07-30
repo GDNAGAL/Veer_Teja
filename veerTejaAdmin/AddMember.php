@@ -152,7 +152,7 @@ input::-webkit-inner-spin-button {
               </div>
               <div class="form-group">
                 <label>ID Number :</label>
-                <input type="number" class="form-control" placeholder="Enter Mobile Number" name="idno">
+                <input type="text" class="form-control" placeholder="Enter ID Number" name="idno">
               </div>
               <div class="form-group">
                 <label>Select Offer :</label>
