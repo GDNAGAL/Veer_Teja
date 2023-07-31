@@ -40,7 +40,6 @@ function agent_table_data(){
   });
 }
 
-
 // Add New Member
 $('#addmember').on('submit', function(e){
   e.preventDefault();

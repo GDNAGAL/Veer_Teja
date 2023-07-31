@@ -1,15 +1,5 @@
-var navItems = document.querySelectorAll(".mobile-bottom-nav__item");
-navItems.forEach(function(e, i) {
-	e.addEventListener("click", function(e) {
-		navItems.forEach(function(e2, i2) {
-			e2.classList.remove("mobile-bottom-nav__item--active");
-		})
-		this.classList.add("mobile-bottom-nav__item--active");
-	});
-});
-
 // Set the date we're counting down to
-var countDownDate = new Date("Aug 30, 2023 17:05:00");
+var countDownDate = new Date("aug 30, 2023 17:05:00");
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -54,13 +44,15 @@ var x = setInterval(function() {
     })
     //disable button
     document.querySelectorAll('[id="bookbtn"]').forEach(element => {
-      element.innerHTML = "<button class='ticket-booking-btn' disabled>Booking Closed</button>";
+      element.innerHTML = "<button type='button' class='ticket-booking-btn' disabled>Booking Closed</button>";
     })
     //document.getElementById("demo").innerHTML = "EXPIRED";
   }else{
      //book button show 
   document.querySelectorAll('[id="bookbtn"]').forEach(element => {
-    element.innerHTML = "<a href='bookingDetails'><button class='ticket-booking-btn'>Book Token ( टोकन ख़रीदे )</button></a>";
+    element.innerHTML = "<button class='ticket-booking-btn' type='submit' id='bookbtns'>Book Token ( टोकन ख़रीदे )</button>";
   })
   }
 }, 1000);
+
+

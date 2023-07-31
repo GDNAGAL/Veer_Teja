@@ -42,10 +42,10 @@ include("veerTejaAdmin/includes/connection.php");
                         <span class='product-catagory' id='timer'></span>
                         <h4> ₹ $row[price]/- </h4>
                         <p>$row[text]</p>
-                        <div id='bookbtn'>
-                          
-                        </div>
-        
+                        <form method='GET' action='bookingDetails.php'>
+                        <input type='hidden' id='oid' value='$row[Id]' name='oid' required>
+                        <div id='bookbtn'></div>
+                        </form>
                       </div>
                     </div>
                   </div>";
@@ -86,15 +86,9 @@ include("veerTejaAdmin/includes/connection.php");
         </div>
       </div>
       <div class="col-12 col-md-6 col-lg-4 verify-ticket">
-        <div class="product-card">
-          <form>
-            <fieldset>
-              <legend>अपना टिकट नं. वेरीफाई करें </legend>
-          
-              <input type="text" placeholder="अपना मोबाइल नंबर दर्ज करें ">
-              <button>Verify Ticket</button>
-            </fieldset>
-          </form>
+        <div class="product-card" style='height:auto;'>
+              <iframe width="100%" height="400px" src="https://www.youtube.com/embed/Gbxiqswz1hA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+         
           <!-- <h4>टिकट कैसे ख़रीदे!</h4>
           <video class="w-100 mt-2 mb-2" controls>
             <source src="movie.mp4" type="video/mp4">

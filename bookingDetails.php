@@ -1,10 +1,13 @@
 <?php
-$off = $_GET['off'];
+include("veerTejaAdmin/includes/connection.php");
+$oid = $_GET['oid'];
 
-if($off=="" || $off == null){
+if($oid=="" || $oid == null){
   header('Location:index');
 }
-
+//find offer amount
+$findamount=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `price` FROM `tbl_token_offer` where `Id`=$oid"));
+$price = $findamount['price'];
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +25,7 @@ if($off=="" || $off == null){
     <!-- font awesome link-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Javascript include -->
     <script src="./asset/js/bootstrap.bundle.js"></script>
     <script src="./asset/js/bootstrap.esm.js.map"></script>
@@ -44,7 +47,7 @@ if($off=="" || $off == null){
 
             <div class="col-12">
                 <p class="booktoken">टोकन बुक करने के लिए अपनी जानकारी भरें :--</p>
-                <form action="" autocomplete="off">
+                <form autocomplete="off" method="POST" id="tokenbuy">
                     <div class="mb-3">
                         <input type="name" class="form-control" id="" placeholder="Full Name" name="fullname" required>
                       </div>
@@ -52,10 +55,10 @@ if($off=="" || $off == null){
                         <input type="name" class="form-control" id="" placeholder="Father Name" name="fathername" required>
                       </div>
                       <div class="mb-3">
-                        <input type="number" class="form-control" id="" placeholder="Mobile No." name="mobile" required>
+                        <input type="number" class="form-control" id="mobile" placeholder="Mobile No." name="mobile" required>
                       </div>
                       <div class="mb-3">
-                        <select name="" id="" class="form-control" name="district" required>
+                        <select  id="" class="form-control" name="district" required>
                             <option value="">Select District</option>
                             <option>Ajmer (अजमेर)</option>
                             <option>Banswara (बाँसवाड़ा)</option>
@@ -93,7 +96,7 @@ if($off=="" || $off == null){
                         </select>
                       </div>
                       <div class="payment-box">
-                    <h3>Pay <span style='color:#EF194C'>Rs 399</span></h3>
+                    <h3>Pay <span style='color:#EF194C'>Rs <?php echo $price; ?></span></h3>
                     <div class="border rounded-4 p-2 d-flex justify-content-center">
                     <img src="./asset/img/qr.png" alt=""  width="100px" height="100px">
                     <div class="justify-content-center m-4">
@@ -102,22 +105,24 @@ if($off=="" || $off == null){
                     </div>
                     </div>
                     <div class="mb-3 mt-3">
-                        <input type="name" class="form-control" id="" placeholder="Enter Transaction No." name="trno" required>
+                        <input type="text" class="form-control" id="" placeholder="Enter Transaction No." name="trno" required>
+                        <input type="hidden" value="<?php echo $oid; ?>" name="offerid" required>
+                        <input type="hidden" value="<?php echo $price; ?>" name="amountpaid" required>
                     </div>
                     <div class="mb-3 mt-3">
-                    <input id="checkbox" type="checkbox" style="margin-left:10px"/>
+                    <input id="checkbox" type="checkbox" style="margin-left:10px" required/>
                     <label for="checkbox"> I agree to these <a href="#">Terms and Conditions</a>.</label>
                     </div>
+                    <button type="submit" id="bookandsave" class="save" name="tokenbuy">Book Now</button>
 
+                 </form>
                 </div>
-                      <a href="payment.htm" ><button class="save">Book Now</button></a>
-
-                </form>
+                      
             </div>
 
             </div>
             </div>
-
+<br><br><br><br><br><br><br><br>
             
 
    </section>
@@ -125,9 +130,37 @@ if($off=="" || $off == null){
    </main>
 
      
-   <?php require("includes/footer.php"); ?>
+<?php require("includes/footer.php"); ?>
 
 
-    <script src="./asset/js/bottom-nav.js"></script>
+<script src="./asset/js/bottom-nav.js"></script>
+<script>
+$(document).ready(function(){
+// buy Token
+$('#tokenbuy').on('submit', function(e){
+  e.preventDefault();
+  $("#bookandsave").attr("disabled", true);
+  $("#bookandsave").html("Please Wait...");
+  let data = new FormData(this);
+  data.append(event.submitter.name, event.submitter.value);
+  $.ajax({
+    type: "POST", 
+    url: "form_submit.php",              
+    data: data, 
+    contentType: false,       
+    cache: false,             
+    processData:false,
+    success: function(result){
+      if(result==0){
+        //alert("Failed !!!")
+        window.location.href = "Error";
+        }else if(result==1){
+        window.location.href = `Success?mobile=${$('#mobile').val()}`;
+        }
+      }
+    });
+  });
+})
+    </script>
 </body>
 </html>
