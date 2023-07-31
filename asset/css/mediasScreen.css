@@ -6,4 +6,12 @@
     font-size: 18px;
     line-height: 60px;
 }  
+
+.tcnt{
+    display: flex !important;
+    flex-direction: column;
+  }
+.token-card{
+    width:88%;
+  }
 }

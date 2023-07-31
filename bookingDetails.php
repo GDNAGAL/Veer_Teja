@@ -98,10 +98,10 @@ $price = $findamount['price'];
                       <div class="payment-box">
                     <h3>Pay <span style='color:#EF194C'>Rs <?php echo $price; ?></span></h3>
                     <div class="border rounded-4 p-2 d-flex justify-content-center">
-                    <img src="./asset/img/qr.png" alt=""  width="100px" height="100px">
+                    <img src="./asset/img/qr.png" alt=""  width="120px" height="120px">
                     <div class="justify-content-center m-4">
-                    <input style='text-transform:lowercase; margin:0px;' class="form-control" type="text" value="9001881117@ybl" readonly>
-                    <button type="button" class='copy'>Copy UPI Id</button>
+                    <input style='text-transform:lowercase; margin:0px;' class="form-control" id="copytext" type="text" value="9001881117@ybl" readonly>
+                    <button type="button" id='copy' class='copy'>Copy UPI Id</button>
                     </div>
                     </div>
                     <div class="mb-3 mt-3">
@@ -160,6 +160,49 @@ $('#tokenbuy').on('submit', function(e){
       }
     });
   });
+
+
+//Copty Text
+$("#copy").on("click",function(){
+  // Get the text field
+  var copyText = document.getElementById("copytext");
+
+  // Select the text field
+  // copyText.select();
+  // copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  //  // Copy the text inside the text field
+  // navigator.clipboard.writeText(copyText.value);
+
+  // Create a temporary textarea element
+    const tempTextArea = document.createElement('textarea');
+    tempTextArea.value = copyText.value;
+    tempTextArea.style.position = 'absolute';
+    tempTextArea.style.left = '-9999px';
+    
+    // Append the textarea to the document
+    document.body.appendChild(tempTextArea);
+
+    // Select the text inside the textarea
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+    try {
+      // Copy the selected text to the clipboard
+      document.execCommand('copy');
+      copyText.select();
+      $(this).html("Copied !")
+      // alert('Text copied to clipboard!');
+    } catch (err) {
+      alert('Unable to copy text to clipboard. Please copy it manually.');
+    }
+
+    // Remove the temporary textarea
+    document.body.removeChild(tempTextArea);
+
+})
+
+
 })
     </script>
 </body>

@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,6 +23,7 @@
  <style>
   input{
     text-transform: capitalize;
+    border:1px solid #EF194C !important;
   }
  </style>
 </head>
@@ -32,13 +36,13 @@
   <div class="container">
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4 verify-ticket">
-        <div class="product-card">
-          <form>
+        <div class="">
+          <form method="get" autocomplete="off">
             <fieldset>
               <legend>अपने टोकन की जानकारी प्राप्त करे </legend>
           
-              <input type="text" placeholder="अपना मोबाइल नंबर दर्ज करें ">
-              <button>Verify Token</button>
+              <input type="number" placeholder="अपना मोबाइल नंबर दर्ज करें " name="mobile" required>
+              <button type="submit">Verify Token</button>
             </fieldset>
           </form>
           <!-- <h4>टिकट कैसे ख़रीदे!</h4>
@@ -52,6 +56,110 @@
     </div>
   </div>
 </section>
+      <h1 style='margin-left:6%; margin-bottom:0px; color:#EF194C; font-size:18px'>Token Status :</h1><hr style='width:90%; margin-left:5%;'>
+      <div class="tcnt">
+
+          <!-- Tokens card -->
+          <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+
+          <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+
+          <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+
+            <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+
+            <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+
+            <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+
+            <div class='token-card'>
+              <div class="head">Token No. : 21001</div>
+              <div class="cnt">
+                <div class="imgcnt">
+                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
+                </div>
+                <div class="detal">
+                  Name : User Name<br>
+                  Mobile : 9001881117<br>
+                  City : Bikaner
+                </div>
+              </div>
+            </div>
+          
+        </div>
+        <br><br><br><br><br>
 </main>
 
      
