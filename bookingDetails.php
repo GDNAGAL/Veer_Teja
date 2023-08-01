@@ -48,14 +48,15 @@ $price = $findamount['price'];
             <div class="col-12">
                 <p class="booktoken">टोकन बुक करने के लिए अपनी जानकारी भरें :--</p>
                 <form autocomplete="off" method="POST" id="tokenbuy">
-                    <div class="mb-3">
+                      <div class="mb-3">
+                        <input type="number" class="form-control" id="mobile" placeholder="Mobile No." name="mobile" required>
+                        <span id="mval" style='color:red; font-size:12px'></span>
+                      </div>    
+                      <div class="mb-3">
                         <input type="name" class="form-control" id="" placeholder="Full Name" name="fullname" required>
                       </div>
                       <div class="mb-3">
                         <input type="name" class="form-control" id="" placeholder="Father Name" name="fathername" required>
-                      </div>
-                      <div class="mb-3">
-                        <input type="number" class="form-control" id="mobile" placeholder="Mobile No." name="mobile" required>
                       </div>
                       <div class="mb-3">
                         <select  id="" class="form-control" name="district" required>
@@ -95,7 +96,7 @@ $price = $findamount['price'];
                             <option>Udaipur (उदयपुर)</option>  
                         </select>
                       </div>
-                      <div class="payment-box">
+                      <div class="payment-box" style='display:none'>
                     <h3>Pay <span style='color:#EF194C'>Rs <?php echo $price; ?></span></h3>
                     <div class="border rounded-4 p-2 d-flex justify-content-center">
                     <img src="./asset/img/qr.png" alt=""  width="120px" height="120px">
@@ -136,6 +137,37 @@ $price = $findamount['price'];
 <script src="./asset/js/bottom-nav.js"></script>
 <script>
 $(document).ready(function(){
+//validate mobile
+$('#mobile').on('keyup', function(){
+  $('.payment-box').hide();
+if($(this).val().length==10){
+  let mobile = $(this).val();
+  const formData = new FormData();
+  formData.append("mobileval", mobile);
+
+  $('#mval').html('');
+  //alert($(this).val())
+  // const myJSON = JSON.stringify(data);
+  $.ajax({
+    type: "POST", 
+    url: "form_submit.php",              
+    data: formData, 
+    contentType: false,       
+    cache: false,             
+    processData:false,
+    success: function(result){
+      if(result==0){
+        $('.payment-box').show();
+        //alert("Failed !!!")
+        }else if(result==1){
+          $('.payment-box').hide();
+          $('#mval').html('Mobile Already Registred With Us');
+        }
+      }
+    });
+}
+})
+
 // buy Token
 $('#tokenbuy').on('submit', function(e){
   e.preventDefault();

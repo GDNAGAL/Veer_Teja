@@ -29,6 +29,13 @@
   <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style>
+  td{
+    height:auto;
+    vertical-align: middle !important;
+    text-transform:capitalize;
+  }
+</style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -135,52 +142,30 @@
                   <thead>
                   <tr>
                     <th>Order ID</th>
-                    <th>Item</th>
+                    <th>Member_Name</th>
+                    <th>Mobile No.</th>
+                    <th>District</th>
                     <th>Status</th>
-                    <th>Popularity</th>
+                    <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                    <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                    <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
-                    <td>
-                      <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                    </td>
-                  </tr>
+                    <?php
+                   $sql = mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `status`=0 limit 5");
+                    while($row=mysqli_fetch_assoc($sql)){
+                      $orderid = $row['Id']+2000;
+                      echo "<tr>
+                      <td><a href='pages/examples/invoice.html'>$orderid</a></td>
+                      <td>$row[member_name]</td>
+                      <td>$row[mobile]</td>
+                      <td>$row[district]</td>
+                      <td><span class='label label-warning'>Pending</span></td>
+                      <td>
+                        <div><button class='btn btn-success btn-flat'>Review</button></div>
+                      </td>
+                    </tr>";
+                    }
+                    ?>
       
                   </tbody>
                 </table>

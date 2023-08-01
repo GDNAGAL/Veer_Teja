@@ -334,9 +334,17 @@
           </a>
         </li>
         <li class="treeview">
-          <a href="#">
+        <a href="" onclick="window.open('Settings','_self')">
             <i class="fa fa-cog"></i>
             <span>Setting</span>
+            <span class="pull-right-container">
+            </span>
+          </a>
+        </li>
+        <li class="treeview">
+        <a href="" onclick="window.open('logout.php','_self')">
+            <i class="fa fa-sign-out"></i>
+            <span>Log Out</span>
             <span class="pull-right-container">
             </span>
           </a>

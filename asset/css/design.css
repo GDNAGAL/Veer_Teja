@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -161,6 +162,8 @@ border-radius: 10%;
     margin-left: 10px;
     font-size: 34px;
     color: var(--color-orange);
+    font-family: 'Lugrasimo', cursive;
+    font-weight: bold;
 }
 .product-details h4 a {
     font-weight: 500;
@@ -467,9 +470,10 @@ marquee{
     /* display: flex !important; */
     display: inline-grid;
     grid-template-columns: auto auto auto;
-    align-items: center;
-    text-align: center;
+    justify-content: center;
     flex-direction: row;
+    /* border:1px solid #333; */
+    width: 100%;
   }
 .token-card{
     box-sizing: border-box;

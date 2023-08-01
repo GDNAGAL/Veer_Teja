@@ -3,15 +3,17 @@
     margin: 20px 5px;
 }
 .heading{
-    font-size: 18px;
-    line-height: 60px;
+    font-size: 14px;
+    line-height: 75px;
 }  
 
 .tcnt{
     display: flex !important;
     flex-direction: column;
+    justify-content: center !important;
   }
 .token-card{
-    width:88%;
+    width:90%;
+    margin-left: 5%;
   }
 }

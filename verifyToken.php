@@ -58,7 +58,7 @@
 </section>
       <h1 style='margin-left:6%; margin-bottom:0px; color:#EF194C; font-size:18px'>Token Status :</h1><hr style='width:90%; margin-left:5%;'>
       <div class="tcnt">
-
+ 
           <!-- Tokens card -->
           <div class='token-card'>
               <div class="head">Token No. : 21001</div>

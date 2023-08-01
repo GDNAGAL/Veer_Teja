@@ -1,6 +1,6 @@
 <?php
 include("veerTejaAdmin/includes/connection.php");
-error_reporting(0);
+// error_reporting(0);
 //Buy Token 
 if (isset($_POST['tokenbuy'])) {
 	$fullname = $_POST['fullname'];
@@ -19,4 +19,20 @@ if ($buytoken==True) {
 }
 
 }
+
+
+//Mobile Validata
+if (isset($_POST['mobileval'])) {
+	$mobile = $_POST['mobileval'];
+
+$mobileval = mysqli_query($conn, "SELECT `mobile` FROM `tbl_token_request` where `mobile`='$mobile'");
+if (mysqli_num_rows($mobileval)>0) {
+	echo 1;
+}else{
+	echo 0;
+}
+
+}
+
+
 ?>
