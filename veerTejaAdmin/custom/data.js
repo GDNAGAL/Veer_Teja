@@ -66,3 +66,33 @@ $('#addmember').on('submit', function(e){
         }
       });
   });
+
+
+  // Approve req
+$('#approvereq').on('submit', function(e){
+  e.preventDefault();
+  $("#acbtn").attr("disabled", true);
+  $("#acbtn").html("Loading...");
+
+  let data = new FormData(this);
+      data.append(event.submitter.name, event.submitter.value);
+      $.ajax({
+        type: "POST", 
+        url: "getData/form_submit.php",              
+        data: data, 
+        contentType: false,       
+        cache: false,             
+        processData:false,
+        success: function(result){
+          if(result==0){
+            alert("Failed !!!")
+            //window.location.href = "AddMember";
+          }else if(result==1){
+            alert("Success")
+            //window.location.href = "AddMember";
+          }
+          $("#acbtn").attr("disabled", false);
+          $("#acbtn").html("Approve");
+        }
+      });
+  });

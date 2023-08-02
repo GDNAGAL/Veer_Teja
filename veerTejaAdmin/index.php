@@ -114,7 +114,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo mysqli_num_rows (mysqli_query($conn, "SELECT * FROM `agents`")); ?></h3>
+              <h3><?php echo mysqli_num_rows(mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `status`=0")); ?></h3>
 
               <p>Token Order Request</p>
             </div>
@@ -161,7 +161,7 @@
                       <td>$row[district]</td>
                       <td><span class='label label-warning'>Pending</span></td>
                       <td>
-                        <div><button class='btn btn-success btn-flat'>Review</button></div>
+                        <div><a href='tokenrequestreview?orderid=$row[Id]'><button class='btn btn-success btn-flat'>Review</button></a></div>
                       </td>
                     </tr>";
                     }

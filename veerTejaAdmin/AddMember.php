@@ -143,7 +143,6 @@ input::-webkit-inner-spin-button {
             <div class="form-group">
                 <label>Select Agent :</label>
                 <select class="form-control" id="selectclass" style="width: 100%;" name="agents" required>
-                  <option selected="selected" value="0">No Agent</option>
                   <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `agents`");
                   while($row=mysqli_fetch_assoc($sql)){

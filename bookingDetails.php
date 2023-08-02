@@ -33,6 +33,9 @@ $price = $findamount['price'];
   input{
     text-transform: capitalize;
   }
+  input[type="email"]{
+    text-transform: lowercase !important;
+  }
  </style>
 </head>
 <body>
@@ -53,10 +56,13 @@ $price = $findamount['price'];
                         <span id="mval" style='color:red; font-size:12px'></span>
                       </div>    
                       <div class="mb-3">
-                        <input type="name" class="form-control" id="" placeholder="Full Name" name="fullname" required>
+                        <input type="text" class="form-control" id="" placeholder="Full Name" name="fullname" required>
                       </div>
                       <div class="mb-3">
-                        <input type="name" class="form-control" id="" placeholder="Father Name" name="fathername" required>
+                        <input type="text" class="form-control" id="" placeholder="Father Name" name="fathername" required>
+                      </div>
+                      <div class="mb-3">
+                        <input type="email" class="form-control" id="" placeholder="Enter Email " name="email" required>
                       </div>
                       <div class="mb-3">
                         <select  id="" class="form-control" name="district" required>
