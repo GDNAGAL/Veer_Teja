@@ -73,7 +73,7 @@ input::-webkit-inner-spin-button {
             <form method="post" id="addmember" autocomplete="off">
             <div class="col-md-6">
               <div class="form-group">
-                <label>Token No. :</label>
+                <label>Ticket No. :</label>
                 <?php
                 error_reporting(0);
                 $token=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `token_no` FROM `tbl_tokens` ORDER by `token_no` DESC limit 1"));
@@ -86,16 +86,19 @@ input::-webkit-inner-spin-button {
                 ?>
               </div>
               <div class="form-group">
+                <?php 
+                $offtoken=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `offlinetokenno` FROM `tbl_tokens` ORDER by `Id` DESC limit 1"));
+                ?>
+                <label>Token No. (offline) :</label>
+                <input type="number" class="form-control" value="<?php echo $offtoken['offlinetokenno']+1; ?>" placeholder="Enter Token No." name="offtoken" >
+              </div>
+              <div class="form-group">
                 <label>Member Name :</label>
                 <input type="text" class="form-control" placeholder="Enter Member Name" name="membername" required>
               </div>
               <div class="form-group">
                 <label>Father Name :</label>
                 <input type="text" class="form-control"  placeholder="Enter Father Name" name="fathername" required>
-              </div>
-              <div class="form-group">
-                <label>Mobile :</label>
-                <input type="number" class="form-control"  placeholder="Enter Mobile No." name="mobile" required>
               </div>
                 <div class="form-group">
                 <label>District :</label>
@@ -140,6 +143,10 @@ input::-webkit-inner-spin-button {
            </div>
             <!-- /.col -->
             <div class="col-md-6">
+            <div class="form-group">
+                <label>Mobile :</label>
+                <input type="number" class="form-control"  placeholder="Enter Mobile No." name="mobile" required>
+              </div>
             <div class="form-group">
                 <label>Select Agent :</label>
                 <select class="form-control" id="selectclass" style="width: 100%;" name="agents" required>

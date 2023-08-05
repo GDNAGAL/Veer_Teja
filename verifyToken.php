@@ -1,4 +1,55 @@
 <?php
+include("includes/footer.php");
+error_reporting(0);
+$mobile = $_GET['mobile'];
+
+if($mobile == "" || $mobile == null){
+  $resp = "";
+}else{
+  include("veerTejaAdmin/includes/connection.php");
+  $member = mysqli_query($conn, "SELECT * FROM `tbl_members` where `mobile`='$mobile'");
+  $memberrows=mysqli_fetch_assoc($member);
+  $mr = mysqli_num_rows($member);
+  $memberid = $memberrows['id'];
+  if($mr==0){
+  $tokenreq = mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `mobile`='$mobile'");
+  $tokenreqrows=mysqli_fetch_assoc($tokenreq);
+  $reqnum = mysqli_num_rows($tokenreq);
+  if($reqnum==0){
+    $resp = "<div style='margin-top:40px; padding-top:0px'>
+    <div class='mb-4 text-center' style='margin-top:0px'>
+    <img src='asset/img/cross.png' width='75' height='75'>
+   </div>
+    <div class='text-center'>
+        <h1>No Record Found !</h1>
+        </div>
+  </div>";
+  }elseif($tokenreqrows['status']==0){
+    $resp = "<div style='margin-top:40px; padding-top:0px'>
+    <div class='mb-4 text-center' style='margin-top:0px'>
+    <img src='asset/img/warning.png' width='75' height='75'>
+   </div>
+    <div class='text-center'>
+        <h1>Payment Verification Pending</h1>
+        <p style='line-height:35px'>आपका पेमेंट वेरिफिकेशन अभी पूरा नहीं हुआ है <br> कृपया कुछ समय इंतजार करे या फिर नीचे दिए गये हेल्पलाइन नं. पर सम्पर्क करे <br> <b>हेल्पलाइन नं. +91 8619372377, +91 8890903715</b></p>
+    </div>
+  </div>";
+  }elseif($tokenreqrows['status']==2){
+    $resp = "<div style='margin-top:40px; padding-top:0px'>
+    <div class='mb-4 text-center' style='margin-top:0px'>
+    <img src='asset/img/reject.png' width='75' height='75'>
+   </div>
+    <div class='text-center'>
+        <h1>Your Request Rejected !</h1>
+        </div>
+  </div>";
+  }
+  }else{
+  $tokens = mysqli_query($conn, "SELECT * FROM `tbl_tokens` where `member_id`='$memberid'");
+  $tokennumrow = mysqli_num_rows($tokens);
+  }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -25,6 +76,31 @@
     text-transform: capitalize;
     border:1px solid #EF194C !important;
   }
+  .paid{
+    background-color:#343148FF;
+    color:white;
+  }
+  .free{
+    background-color:#D7C49EFF;
+    color:#343148FF !important;
+  }
+  .paidct{
+    background:#ACE1AF !important;
+    color:green;
+    font-size:12px;
+    padding:1px 10px;
+    padding-top:3px;
+    border-radius:5px;
+
+  }
+  .freect{
+    background:#ffbfbf !important;
+    color:red;
+    font-size:12px;
+    padding:1px 10px;
+    padding-top:3px;
+    border-radius:5px;
+  }
  </style>
 </head>
 <body>
@@ -41,7 +117,7 @@
             <fieldset>
               <legend>अपने टोकन की जानकारी प्राप्त करे </legend>
           
-              <input type="number" placeholder="अपना मोबाइल नंबर दर्ज करें " name="mobile" required>
+              <input type="number" placeholder="अपना मोबाइल नंबर दर्ज करें " value="<?php echo $mobile; ?>" name="mobile" required>
               <button type="submit">Verify Token</button>
             </fieldset>
           </form>
@@ -55,117 +131,43 @@
       </div>
     </div>
   </div>
-</section>
-      <h1 style='margin-left:6%; margin-bottom:0px; color:#EF194C; font-size:18px'>Token Status :</h1><hr style='width:90%; margin-left:5%;'>
+  <h1 style='margin-left:6%; margin-bottom:0px; color:#EF194C; font-size:18px'>Token Status (<?php echo $tokennumrow; ?>) :</h1><hr style='width:90%; margin-left:5%;'>
       <div class="tcnt">
- 
-          <!-- Tokens card -->
-          <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
+        <?php 
+      echo $resp;
+        while($tokenrow=mysqli_fetch_assoc($tokens)) {
+          if($tokenrow['type']=="PAID"){
+            $cl = "paid";
+            $ct ="freect";
+            $tx = "PAID";
+          }else{
+            $cl = "free";
+            $ct = "paidct";
+            $tx = "FREE";
+          }
+          echo "<div class='token-card $cl'>
+          <div class='head'>Token No. : $tokenrow[token_no] <span class='$ct' style='float:right'>$tx</span></div>
+          <div class='cnt'>
+            <div class='imgcnt'>
+            <img src='asset/img/v2.png'  width='110%' height='100%' style='background:white;'>
             </div>
-
-          <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
+            <div class='detal'>
+              Name : $memberrows[member_name]<br>
+              Mobile : $memberrows[mobile]<br>
+              City : $memberrows[district]
             </div>
-
-          <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
-            </div>
-
-            <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
-            </div>
-
-            <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
-            </div>
-
-            <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
-            </div>
-
-            <div class='token-card'>
-              <div class="head">Token No. : 21001</div>
-              <div class="cnt">
-                <div class="imgcnt">
-                  <img src="https://image.shutterstock.com/image-vector/dotted-spiral-vortex-royaltyfree-images-600w-2227567913.jpg" alt="" width='100%' height='100%'>
-                </div>
-                <div class="detal">
-                  Name : User Name<br>
-                  Mobile : 9001881117<br>
-                  City : Bikaner
-                </div>
-              </div>
-            </div>
+          </div>
+        </div>";
+        }
+        ?>
           
         </div>
-        <br><br><br><br><br>
-</main>
-
-     
-   <?php require("includes/footer.php"); ?>
+        <br><br><br><br>
+</section>
+</main> 
 
 
-    <script src="./asset/js/bottom-nav.js"></script>
+<?php //include("includes/footer.php"); ?>
+<script src="./asset/js/bottom-nav.js"></script>
 </body>
 </html>

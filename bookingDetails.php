@@ -1,6 +1,9 @@
 <?php
 include("veerTejaAdmin/includes/connection.php");
 $oid = $_GET['oid'];
+$genral = mysqli_query($conn, "SELECT * FROM `genral` where `Id`=1");
+$genralrows=mysqli_fetch_assoc($genral);
+
 
 if($oid=="" || $oid == null){
   header('Location:index');
@@ -107,7 +110,7 @@ $price = $findamount['price'];
                     <div class="border rounded-4 p-2 d-flex justify-content-center">
                     <img src="./asset/img/qr.png" alt=""  width="120px" height="120px">
                     <div class="justify-content-center m-4">
-                    <input style='text-transform:lowercase; margin:0px;' class="form-control" id="copytext" type="text" value="9001881117@ybl" readonly>
+                    <input style='text-transform:lowercase; margin:0px;' class="form-control" id="copytext" type="text" value="<?php echo $genralrows['upi'] ?>" readonly>
                     <button type="button" id='copy' class='copy'>Copy UPI Id</button>
                     </div>
                     </div>

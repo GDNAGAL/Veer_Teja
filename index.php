@@ -1,5 +1,7 @@
 <?php
 include("veerTejaAdmin/includes/connection.php");
+$genral = mysqli_query($conn, "SELECT * FROM `genral` where `Id`=1");
+$genralrows=mysqli_fetch_assoc($genral);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +9,8 @@ include("veerTejaAdmin/includes/connection.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>जय वीर तेजा लक्की ड्रा, नागौर || Jai Veer Teja Lucky Draw</title>
-    <meta name="description" content="Some tags are vital for SEO. Others have little or no impact on rankings. Here's every type of meta tag you need to know about.The purpose of a meta description is to reflect the essence of a page, but with more details and context."/>
+    <meta name="keywords" content="Jai Veer Teja, Veer Teja, Lucky Draw, Jai Veer Teja Lucky Draw, Nagour,Bikaner">
+    <meta name="description" content=""/>
     <!-- bootstrap include -->
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/design.css">
@@ -29,7 +32,8 @@ include("veerTejaAdmin/includes/connection.php");
   <section class="hero-section">
     <div class="container">
       <div class="row">
-          <marquee behavior="" direction="">लॉटरी 15 अक्टूबर को निकाली जायेगी </marquee>
+        <input type="hidden" value="<?php echo $genralrows['closedate']; ?>" id="closedate">
+          <marquee behavior="" direction=""><?php echo $genralrows['marquee']; ?></marquee>
         <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `tbl_token_offer`");
                   while($row=mysqli_fetch_assoc($sql)){

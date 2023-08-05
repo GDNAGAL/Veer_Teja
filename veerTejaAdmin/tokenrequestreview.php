@@ -84,7 +84,7 @@ if($rows['status']==0){
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-info">
-        <img class="profile-user-img img-responsive img-circle" src="dist/img/user4-128x128.jpg" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="dist/img/avtar5.jpg" alt="User profile picture">
 
         <h3 class="profile-username text-center text-capitalize"><?php echo $rows['member_name']; ?></h3>
 

@@ -4,10 +4,11 @@ include("../includes/connection.php");
 if(isset($_POST['login'])){
 	$myusername = mysqli_real_escape_string($conn,$_POST['username']);
     $mypassword = mysqli_real_escape_string($conn,$_POST['password']); 
-    
-
+    $euser = md5($myusername);
+    $epass = md5($mypassword);
+     
     //validate username and password
-    $sql = mysqli_query($conn,"SELECT * FROM `adminlog` WHERE username = '$myusername' and password = '$mypassword'");
+    $sql = mysqli_query($conn,"SELECT * FROM `adminlog` WHERE eusername = '$euser' and epassword = '$epass'");
 	$rowcount = mysqli_num_rows($sql);
 	if($rowcount==1){
 		session_start();

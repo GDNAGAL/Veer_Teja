@@ -1,5 +1,6 @@
+var closedate = document.getElementById("closedate").value;
 // Set the date we're counting down to
-var countDownDate = new Date("aug 30, 2023 17:05:00");
+var countDownDate = new Date(closedate);
 
 // Update the count down every 1 second
 var x = setInterval(function() {

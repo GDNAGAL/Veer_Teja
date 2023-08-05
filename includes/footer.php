@@ -9,7 +9,7 @@
   </div>
   <div class="mobile-bottom-nav__item">		
   <a href="verifyToken"><div class="mobile-bottom-nav__item-content">
-      <i class="material-icons">mail</i>
+      <i class="material-icons">search</i>
       टोकन सत्यापित करें
     </div></a>
   </div>

@@ -19,7 +19,9 @@
    <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
    <!-- Select2 -->
 <link rel="stylesheet" href="bower_components/select2/dist/css/select2.min.css">
-  <!-- Theme style -->
+ <!-- Date Picker -->
+ <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">  
+<!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
@@ -29,12 +31,20 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 <style>
-
+  input[data-provide="datepicker"],input[type="time"]{
+    width:100%;
+    margin-bottom:10px;
+    padding:5px;
+  }
   </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-  <?php require("includes/header.php")?>
+  <?php require("includes/header.php");
+
+$genral = mysqli_query($conn, "SELECT * FROM `genral` where `Id`=1");
+$gentalrows=mysqli_fetch_assoc($genral);
+  ?>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -49,9 +59,9 @@
           <!-- Custom Tabs -->
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#tab_1" data-toggle="tab">Genral Settings</a></li>
-              <li><a href="#tab_2" data-toggle="tab">Profile</a></li>
-              <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+              <li class="active"><a href="#tab_1" data-toggle="tab">Profile</a></li>
+              <li><a href="#tab_2" data-toggle="tab">Draw And Account Details</a></li>
+              <li><a href="#tab_3" data-toggle="tab">Change Username & Password</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="tab_1">
@@ -68,15 +78,64 @@
                 at the present moment; and yet I feel that I never was a greater artist than now.
               </div>
               <!-- /.tab-pane -->
-              <div class="tab-pane" id="tab_2">
-                The European languages are members of the same family. Their separate existence is a myth.
-                For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                new common language would be desirable: one could refuse to pay expensive translators. To
-                achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                words. If several languages coalesce, the grammar of the resulting language is more simple
-                and regular than that of the individual languages.
+              <div class="tab-pane row" id="tab_2">
+              <div class="col-md-6">
+              <!-- Profile Image -->
+              <div class="box box-primary" style='background:#e6f0ff'>
+                <div class="box-body box-profile">
+                  <h3 class="profile-username">Scroll Text</h3>
+                  <form method="post" id="scrolltextform">
+                <textarea name="scrolltext" value="" id="stext" style="width:100%;resize: vertical;" cols="30" rows="17">
+                  <?php echo $gentalrows['marquee']; ?>
+                </textarea>
+                <button type="submit" id="uscrolltextbtn"  name="uscrolltextbtn" class="btn btn-primary btn-block"><b>Update</b></button>
+                </form>  
               </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+              </div>
+              <div class="col-md-6">
+
+               <!-- Profile Image -->
+               <div class="box box-primary" style='background:#e6f0ff'>
+                <div class="box-body box-profile">
+                  <h3 class="profile-username">Draw Closing Date :</h3>
+                  <form method="post" id="closedateform" autocomplete="off">
+                  <p>Current Close Date : <b><?php echo $gentalrows['closedate'];?></b></p>
+                  <input data-provide="datepicker" placeholder="Booking Close Date" name="bookingclosedate" required>
+                  <input type="time" name="closetime" required>
+                  <button type="submit" id="closedatebtn"  name="closedatebtn" class="btn btn-primary btn-block"><b>Update</b></button>
+                </form> 
+              </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+
+              <!-- Profile Image -->
+              <div class="box box-primary" style='background:#e6f0ff'>
+                <div class="box-body box-profile">
+                  <h3 class="profile-username">Payment Details :</h3>
+                  <form action="getData/form_submit.php" method="POST"  autocomplete="off" enctype="multipart/form-data">
+                  <div class="form-group">
+                <label>QR Code :</label>
+                <input type="file" class="form-control" accept="image/png, image/gif, image/jpeg" name="qr" required>
+              </div>
+              <div class="form-group">
+                <label>UPI ID :</label>
+                <input type="text" class="form-control" value="<?php echo $gentalrows['upi'];?>" placeholder="Enter UPI ID" name="upi" required>
+              </div>
+                  <button type="submit"  name="updatepaymentdetails" class="btn btn-primary btn-block"><b>Update</b></button>
+                </form>
+              </div>
+                <!-- /.box-body -->
+              </div>
+              <!-- /.box -->
+
+              </div>
+              <!-- /.col -->
+              </div>
+
               <!-- /.tab-pane -->
               <div class="tab-pane" id="tab_3">
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -115,11 +174,20 @@
 <script src="bower_components/select2/dist/js/select2.full.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
+
+<!-- datepicker -->
+<script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="custom/data.js"></script>
-
-
+<script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+    $('#stext').val(function(i,v){
+        return v.replace(/\s+/g,' ').replace(/>(\s)</g,'>\n<');
+    });
+})
 </script>
+
 </body>
 </html>

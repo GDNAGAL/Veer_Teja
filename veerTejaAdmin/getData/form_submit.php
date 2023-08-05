@@ -7,7 +7,7 @@ if (isset($_POST['addagent'])) {
 	$agentname = $_POST['agent_name'];
 	$mobile = $_POST['mobile'];
 
-$insertstudent = mysqli_query($conn, "INSERT INTO `agents`(`agent_name`, `mobile`, `status`) VALUES ('$agentname','$mobile', 1)");
+$insertstudent = mysqli_query($conn, "INSERT INTO `agents`(`agent_name`, `agentmobile`, `status`) VALUES ('$agentname','$mobile', 1)");
 if ($insertstudent==True) {
 	echo 1;
 }else{
@@ -58,6 +58,7 @@ if (isset($_POST['addmember'])) {
 	$idtype = $_POST['idtype'];
 	$idno = $_POST['idno'];
 	$offerchhose = $_POST['offerchoose'];
+	
 
 	$getofferdetails=mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbl_token_offer` WHERE `Id` = $offerchhose"));
 	$free = $getofferdetails['free'];
@@ -72,15 +73,18 @@ $findmemberid=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `id` FROM `tbl_memb
 $memberid = $findmemberid['id'];
 
 $tokenno = $_POST['tokenno'];
+$offtoken = $_POST['offtoken'];
 //Inset Token Data
 for($i=1; $i<=$paid; $i++ ){
-	$addpaidtoken = mysqli_query($conn, "INSERT INTO `tbl_tokens` (`token_no`, `member_id`, `amount`, `type`) VALUES ('$tokenno', '$memberid', '$price', 'PAID');");
+	$addpaidtoken = mysqli_query($conn, "INSERT INTO `tbl_tokens` (`token_no`, `member_id`, `amount`, `type`, `agent`, `offlinetokenno`) VALUES ('$tokenno', '$memberid', '$price', 'PAID', '$agents', '$offtoken');");
 	$tokenno = $tokenno+1;
+	$offtoken = $offtoken+1;
 }
 if($free!==0){
 	for($i=1; $i<=$free; $i++ ){
-		$addfreetoken = mysqli_query($conn, "INSERT INTO `tbl_tokens` (`token_no`, `member_id`, `amount`, `type`) VALUES ('$tokenno', '$memberid', '0', 'FREE');");
+		$addfreetoken = mysqli_query($conn, "INSERT INTO `tbl_tokens` (`token_no`, `member_id`, `amount`, `type`, `agent`, `offlinetokenno`) VALUES ('$tokenno', '$memberid', '0', 'FREE', '$agents', '$offtoken');");
 		$tokenno = $tokenno+1;
+		$offtoken = $offtoken+1;
 	}
 }
 
@@ -163,5 +167,71 @@ if ($addpaidtoken==True) {
 }
 
 
+
+
+
+
+//Add Payment Details qr and upi
+if (isset($_POST['updatepaymentdetails'])) {
+	$upi = $_POST['upi'];
+
+/* create new name file */
+$filename   = uniqid() . "-" . time(); // 5dab1961e93a7-1571494241
+$extension  = pathinfo( $_FILES["qr"]["name"], PATHINFO_EXTENSION ); // jpg
+$basename   = $filename . "." . $extension; // 5dab1961e93a7_1571494241.jpg
+
+$source       = $_FILES["qr"]["tmp_name"];
+$destination  = "../../asset/img/{$basename}";
+/* move the file */
+move_uploaded_file( $source, $destination );
+$newfile = $filename . '.' . $extension;
+
+$addoffer = mysqli_query($conn, "UPDATE `genral` SET `qr`='$newfile',`upi`='$upi' WHERE `Id`=1");
+if ($addoffer==True) {
+	echo "<script>alert('Update Successfully');window.location = '../Settings';</script>";
+	//echo "<script> window.location = '../TokenOffer';</script>";
+}else{
+	echo "<script>alert('Failed');window.location = '../Settings';</script>";
+	//echo "<script> window.location = '../TokenOffer';</script>";
+}
+
+}
+
+
+//Update Scroll Text
+if (isset($_POST['uscrolltextbtn'])) {
+	$scrolltext = $_POST['scrolltext'];
+
+$addoffer = mysqli_query($conn, "UPDATE `genral` SET `marquee`='$scrolltext' WHERE `Id`=1");
+if ($addoffer==True) {
+	echo 1;
+}else{
+	echo 0;
+}
+
+}
+
+
+//Update close date
+if (isset($_POST['closedatebtn'])) {
+	$date = $_POST['bookingclosedate'];
+	$time = $_POST['closetime'];
+	$year=substr($date,6,4);
+	$month=substr($date,0,2);
+	$day=substr($date,3,2);
+	if(substr($month,0,1)==0){
+		$month = substr($month,1,1);
+	}
+	$monthname = array("", "Jan", "Feb","Mar", "Apr", "May","Jun", "Jul", "Aug", "Sep", "Oct", "Nov","Dec");
+	$newdate = "$monthname[$month] $day, $year $time:00"; 
+
+$addoffer = mysqli_query($conn, "UPDATE `genral` SET `closedate`='$newdate' WHERE `Id`=1");
+if ($addoffer==True) {
+	echo 1;
+}else{
+	echo 0;
+}
+
+}
 
 ?>

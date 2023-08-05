@@ -478,8 +478,6 @@ marquee{
 .token-card{
     box-sizing: border-box;
     width:400px;
-    background: rgb(4,27,99);
-  background: linear-gradient(40deg, rgba(4,27,99,1) 0%, rgba(0,255,239,1) 100%);
     height:auto;
     border-radius:10px;
     box-shadow: 0 8px 18px 0 rgba(0, 0, 0, 0.2), 0 4px 10px 0 rgba(0, 0, 0, 0.19);
@@ -489,7 +487,7 @@ marquee{
   .token-card .head{
     font-size:20px;
     font-weight:bold;
-    color:white;
+    /* color:white; */
     border-bottom:1px solid white;
   }
   .cnt{
@@ -505,6 +503,7 @@ marquee{
   .detal{
     width: 80%;
     padding:10px;
-    color:white;
+    padding-left: 20px;
+    /* color:white; */
     line-height:20px
   }
