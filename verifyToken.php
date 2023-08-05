@@ -1,5 +1,5 @@
 <?php
-include("includes/footer.php");
+include("includes/footer.htm");
 error_reporting(0);
 $mobile = $_GET['mobile'];
 
@@ -115,10 +115,10 @@ if($mobile == "" || $mobile == null){
         <div class="">
           <form method="get" autocomplete="off">
             <fieldset>
-              <legend>अपने टोकन की जानकारी प्राप्त करे </legend>
-          
+              <!-- <legend>अपने टोकन की जानकारी प्राप्त करे </legend> -->
+          <br><br>
               <input type="number" placeholder="अपना मोबाइल नंबर दर्ज करें " value="<?php echo $mobile; ?>" name="mobile" required>
-              <button type="submit">Verify Token</button>
+              <button type="submit">Token Status</button>
             </fieldset>
           </form>
           <!-- <h4>टिकट कैसे ख़रीदे!</h4>

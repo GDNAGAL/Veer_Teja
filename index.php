@@ -4,7 +4,7 @@ $genral = mysqli_query($conn, "SELECT * FROM `genral` where `Id`=1");
 $genralrows=mysqli_fetch_assoc($genral);
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,12 +13,17 @@ $genralrows=mysqli_fetch_assoc($genral);
     <meta name="description" content="Are you feeling lucky today? You're just a few clicks away from the chance to win fantastic prizes in our exciting Jai Veer Teja lucky draw! Jai Veer Teja Lucky Draw Extravaganza is your ticket to thrilling surprises and amazing rewards.
 "/>
     <!-- OG MEta tags --> 
-    <meta property="og:title" content="Jai Veer Teja Lucky Draw" />
+    <meta name="robots" content="max-image-preview:large">
+    <meta property="og:title" content="Jai Veer Teja Lucky Draw Nagaur" />
     <meta property="og:url" content="https://jaiveertejaluckydraw.in/" />
-    <meta property="og:image" content="asset/img/poster.jpg" />
+    <meta property="og:image" content="https://jaiveertejaluckydraw.in/asset/img/ogposter.jpg" />
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="Book Your Ticket Now" />
+    <meta property="og:description" content="Book Your Ticket Now ! लिंक को ओपन करे व ऑनलाइन टोकन  खरीदें " />
     <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="Book Your Ticket Now ! लिंक को ओपन करे व ऑनलाइन टोकन  खरीदें" />
+<meta name="twitter:image" content="https://jaiveertejaluckydraw.in/asset/img/ogposter.jpg" />
     <!-- bootstrap include -->
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/design.css">
@@ -37,7 +42,7 @@ $genralrows=mysqli_fetch_assoc($genral);
 
 <?php require("includes/header.htm"); ?>
 <main>
-<h1 class="heading">Jai Veer Teja Lucky Draw, Nagaur </h1>
+<!-- <h1 class="heading">Jai Veer Teja Lucky Draw, Nagaur </h1> -->
   <section class="hero-section">
     <div class="container">
       <div class="row">
@@ -49,7 +54,7 @@ $genralrows=mysqli_fetch_assoc($genral);
                     echo "<div class='col-12 col-md-6 col-lg-4'>
                     <div class='product-card'>
                       <div class='product-tumb'>
-                        <img src='veerTejaAdmin/dist/banner/$row[image]' alt='jai veer teja lucky draw' height='300px' width='100%'>
+                        <img src='veerTejaAdmin/dist/banner/$row[image]' alt='jai veer teja lucky draw' height='auto' width='100%'>
                       </div>
                       <div class='product-details'>
                         <span class='product-catagory' id='timer'></span>
@@ -94,7 +99,7 @@ $genralrows=mysqli_fetch_assoc($genral);
     <div class="row">
       <div class="col-12 col-md-6 col-lg-4">
         <div class="product-card">
-          <img src="./asset/img/lucky.jpg" alt="" class="img-fluid">
+          <img src="./asset/img/poster.jpg" alt="" class="img-fluid">
          
         </div>
       </div>
@@ -122,7 +127,7 @@ $genralrows=mysqli_fetch_assoc($genral);
             <div class="social-link">
              <a href="https://www.facebook.com/profile.php?id=100095074703306"><i class="fa-brands fa-facebook"></i></a>
              <a href="https://www.instagram.com/veer_teja_lucky_draw/"><i class="fa-brands fa-instagram"></i></a>
-             <a href="#"><i class="fa-brands fa-twitter"></i></a>
+             <a href="https://youtube.com/"><i class="fa-brands fa-youtube"></i></a>
              <a href="https://wa.me/918619372377" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
             </div>
           </div>

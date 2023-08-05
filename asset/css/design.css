@@ -335,7 +335,7 @@ form button{
 
  h4{
     padding-top: 10px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     font-weight: 600;
     color: var(--color-orange);
     font-size: 20px;
