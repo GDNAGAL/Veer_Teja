@@ -8,9 +8,10 @@ $genralrows=mysqli_fetch_assoc($genral);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>जय वीर तेजा लक्की ड्रा, नागौर || Jai Veer Teja Lucky Draw</title>
-    <meta name="keywords" content="Jai Veer Teja, Veer Teja, Lucky Draw, Jai Veer Teja Lucky Draw, Nagour,Bikaner">
-    <meta name="description" content=""/>
+    <title>Jai Veer Teja Lucky Draw ||जय वीर तेजा लक्की ड्रा, नागौर</title>
+    <meta name="keywords" content="Jai Veer Teja, Veer Teja, Lucky Draw, Jai Veer Teja Lucky Draw, Nagour,Bikaner,prizes, winners, results, lottery system, lottery result">
+    <meta name="description" content="Are you feeling lucky today? You're just a few clicks away from the chance to win fantastic prizes in our exciting Jai Veer Teja lucky draw! Jai Veer Teja Lucky Draw Extravaganza is your ticket to thrilling surprises and amazing rewards.
+"/>
     <!-- bootstrap include -->
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/design.css">
@@ -27,8 +28,9 @@ $genralrows=mysqli_fetch_assoc($genral);
 </head>
 <body>
 
-<?php require("includes/header.php"); ?>
+<?php require("includes/header.htm"); ?>
 <main>
+<h1 class="heading">Jai Veer Teja Lucky Draw, Nagaur </h1>
   <section class="hero-section">
     <div class="container">
       <div class="row">
@@ -126,7 +128,7 @@ $genralrows=mysqli_fetch_assoc($genral);
 
     
    </main>
- <?php require("includes/footer.php"); ?>
+ <?php require("includes/footer.htm"); ?>
 
 
     <script src="./asset/js/bottom-nav.js"></script>

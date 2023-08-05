@@ -34,7 +34,7 @@ if($mobile=="" || $mobile == null){
 </head>
 <body>
 
-<?php require("includes/header.php"); ?>
+<?php require("includes/header.htm"); ?>
 
 <main>
 <section>
@@ -59,7 +59,7 @@ if($mobile=="" || $mobile == null){
 </main>
 
      
-   <?php require("includes/footer.php"); ?>
+   <?php require("includes/footer.htm"); ?>
 
 
     <script src="./asset/js/bottom-nav.js"></script>

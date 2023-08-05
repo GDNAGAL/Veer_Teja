@@ -159,10 +159,13 @@ border-radius: 10%;
     margin-bottom: 18px;
 }
 .heading{
-    margin-left: 10px;
+    margin-top: 5px;
+    text-align: center;
+    padding-top: 0px;
+    float: center;
     font-size: 34px;
     color: var(--color-orange);
-    font-family: 'Lugrasimo', cursive;
+    /* font-family: 'Lugrasimo', cursive; */
     font-weight: bold;
 }
 .product-details h4 a {

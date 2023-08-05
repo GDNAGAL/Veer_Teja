@@ -105,7 +105,7 @@ if($mobile == "" || $mobile == null){
 </head>
 <body>
 
-<?php require("includes/header.php"); ?>
+<?php require("includes/header.htm"); ?>
 
 <main>
 <section>

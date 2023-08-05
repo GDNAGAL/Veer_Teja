@@ -43,7 +43,7 @@ $price = $findamount['price'];
 </head>
 <body>
 
-<?php require("includes/header.php"); ?>
+<?php require("includes/header.htm"); ?>
 
    <main>
    <section class="bookingdetails-section">
@@ -140,7 +140,7 @@ $price = $findamount['price'];
    </main>
 
      
-<?php require("includes/footer.php"); ?>
+<?php require("includes/footer.htm"); ?>
 
 
 <script src="./asset/js/bottom-nav.js"></script>
