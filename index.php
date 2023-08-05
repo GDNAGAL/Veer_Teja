@@ -12,6 +12,13 @@ $genralrows=mysqli_fetch_assoc($genral);
     <meta name="keywords" content="Jai Veer Teja, Veer Teja, Lucky Draw, Jai Veer Teja Lucky Draw, Nagour,Bikaner,prizes, winners, results, lottery system, lottery result">
     <meta name="description" content="Are you feeling lucky today? You're just a few clicks away from the chance to win fantastic prizes in our exciting Jai Veer Teja lucky draw! Jai Veer Teja Lucky Draw Extravaganza is your ticket to thrilling surprises and amazing rewards.
 "/>
+    <!-- OG MEta tags --> 
+    <meta property="og:title" content="Jai Veer Teja Lucky Draw" />
+    <meta property="og:url" content="https://jaiveertejaluckydraw.in/" />
+    <meta property="og:image" content="asset/img/poster.jpg" />
+    <meta property="og:type" content="article" />
+    <meta property="og:description" content="Book Your Ticket Now" />
+    <meta property="og:locale" content="en_US" />
     <!-- bootstrap include -->
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/design.css">
@@ -42,7 +49,7 @@ $genralrows=mysqli_fetch_assoc($genral);
                     echo "<div class='col-12 col-md-6 col-lg-4'>
                     <div class='product-card'>
                       <div class='product-tumb'>
-                        <img src='veerTejaAdmin/dist/banner/$row[image]' alt='' height='300px' width='100%'>
+                        <img src='veerTejaAdmin/dist/banner/$row[image]' alt='jai veer teja lucky draw' height='300px' width='100%'>
                       </div>
                       <div class='product-details'>
                         <span class='product-catagory' id='timer'></span>
