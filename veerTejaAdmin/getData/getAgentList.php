@@ -8,7 +8,7 @@ while($row = mysqli_fetch_assoc($selecttecherlist)) {
  	echo "<tr>
 	<td>$n</td>
 	<td>$row[agent_name]</td>
-	<td>$row[mobile]</td>
+	<td>$row[agentmobile]</td>
 	<td class='text-center'><button class='btn btn-success btn-flat'>Edit</button>&nbsp;<button class='btn btn-danger btn-flat'>Delete</button></td>
 	</tr>";
  }

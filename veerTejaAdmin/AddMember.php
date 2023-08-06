@@ -86,23 +86,45 @@ input::-webkit-inner-spin-button {
                 ?>
               </div>
               <div class="form-group">
-                <?php 
-                $offtoken=mysqli_fetch_assoc(mysqli_query($conn, "SELECT `offlinetokenno` FROM `tbl_tokens` ORDER by `Id` DESC limit 1"));
-                ?>
                 <label>Token No. (offline) :</label>
-                <input type="number" class="form-control" value="<?php echo $offtoken['offlinetokenno']+1; ?>" placeholder="Enter Token No." name="offtoken" >
+                <input type="number" class="form-control" id="offtokeninput" value="" placeholder="Enter Token No." name="offtoken" >
+                <span id="terror" style='color:red'></span>
+              </div>
+              <div class="form-group">
+                <label>Mobile :</label>
+                <input type="number" class="form-control" id="mem_mobile" placeholder="Enter Mobile No." name="mobile" required>
+                <input type="hidden" class="form-control" value="0" id="member_id" name="memberid" required>
               </div>
               <div class="form-group">
                 <label>Member Name :</label>
-                <input type="text" class="form-control" placeholder="Enter Member Name" name="membername" required>
+                <input type="text" class="form-control" placeholder="Enter Member Name" id="member_name" name="membername" required readonly>
               </div>
               <div class="form-group">
                 <label>Father Name :</label>
-                <input type="text" class="form-control"  placeholder="Enter Father Name" name="fathername" required>
+                <input type="text" class="form-control"  placeholder="Enter Father Name" id="father_name" name="fathername" required readonly>
               </div>
-                <div class="form-group">
+                
+              <!-- /.form-group -->
+           </div>
+            <!-- /.col -->
+            <div class="col-md-6">
+            
+            <div class="form-group">
+                <label>Select Agent :</label>
+                <select class="form-control" id="selectagent" style="width: 100%;" name="agents" required>
+                <option selected="selected" value="">Select Agent</option>
+                  <?php
+                  $sql= mysqli_query($conn, "SELECT * FROM `agents`");
+                  while($row=mysqli_fetch_assoc($sql)){
+                    echo "<option value='$row[id]'>$row[agent_name]</option>";
+                  }
+                  ?>
+                </select>
+              </div>
+              <!-- /.form-group -->
+              <div class="form-group">
                 <label>District :</label>
-                <select class="form-control" style="width: 100%;" name="district" required>
+                <select class="form-control" id="district" style="width: 100%;" name="district" required>
                   <option selected="selected" value="">Select District</option>
                   <option>Ajmer (अजमेर)</option>
                   <option>Alwar (अलवर)</option>
@@ -139,30 +161,9 @@ input::-webkit-inner-spin-button {
                   <option>Udaipur (उदयपुर)</option>
                 </select>
               </div>
-              <!-- /.form-group -->
-           </div>
-            <!-- /.col -->
-            <div class="col-md-6">
-            <div class="form-group">
-                <label>Mobile :</label>
-                <input type="number" class="form-control"  placeholder="Enter Mobile No." name="mobile" required>
-              </div>
-            <div class="form-group">
-                <label>Select Agent :</label>
-                <select class="form-control" id="selectclass" style="width: 100%;" name="agents" required>
-                  <?php
-                  $sql= mysqli_query($conn, "SELECT * FROM `agents`");
-                  while($row=mysqli_fetch_assoc($sql)){
-                    echo "<option value='$row[id]'>$row[agent_name]</option>";
-                  }
-                  ?>
-                </select>
-              </div>
-              <!-- /.form-group -->
-              
               <div class="form-group">
                 <label>Select ID Type :</label>
-                <select class="form-control" style="width: 100%;" name="idtype" >
+                <select class="form-control" id="idtype" style="width: 100%;" name="idtype" >
                   <option selected="selected" value="">Select ID Type</option>
                   <option>Aadhar Card</option>
                   <option>PAN Card</option>
@@ -171,7 +172,7 @@ input::-webkit-inner-spin-button {
               </div>
               <div class="form-group">
                 <label>ID Number :</label>
-                <input type="text" class="form-control" placeholder="Enter ID Number" name="idno">
+                <input type="text" id="idnumber" class="form-control" placeholder="Enter ID Number" name="idno">
               </div>
               <div class="form-group">
                 <label>Select Offer :</label>

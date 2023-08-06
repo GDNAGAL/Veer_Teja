@@ -1,7 +1,7 @@
 <?php
 
 $orderid = $_GET['orderid'];
-
+error_reporting(0);
 
 
 include("includes/connection.php");
@@ -16,8 +16,17 @@ if($rows['status']==0){
   $action = "";
 }elseif($rows['status']==1){
   $status = "<span class='label label-success'>Approved</span>";
+  $action = "display:none";
 }elseif($rows['status']==2){
   $status = "<span class='label label-danger'>Rejected</span>";
+  $action = "display:none";
+}
+
+$memberrow = mysqli_fetch_assoc(mysqli_query($conn, "SELECT `id` FROM `tbl_members` where `mobile`=$rows[mobile]"));
+if($memberrow['id']==""){
+  $memberid=0;
+}else{
+  $memberid = $memberrow['id'];
 }
 ?>
 <!DOCTYPE html>
@@ -84,11 +93,11 @@ if($rows['status']==0){
     <!-- Profile Image -->
     <div class="box box-primary">
       <div class="box-body box-info">
-        <img class="profile-user-img img-responsive img-circle" src="dist/img/avtar5.jpg" alt="User profile picture">
+        <img class="profile-user-img img-responsive img-circle" src="dist/img/avatar5.png" alt="User profile picture">
 
         <h3 class="profile-username text-center text-capitalize"><?php echo $rows['member_name']; ?></h3>
 
-        <p class="text-muted text-center">Software Engineer</p>
+        <p class="text-muted text-center">Veer Teja Member</p>
 
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
@@ -132,7 +141,7 @@ if($rows['status']==0){
                   </thead>
                   <tbody>
                     <tr>
-                      <td><?php echo $rows['Id']+2000; ?></td>
+                      <td><?php echo $rows['Id']+2000;?></td>
                       <td><?php echo $rows['refno']; ?></td>
                       <td><?php echo $rows['amoutpaid']; ?></td>
                       <td><?php echo $status; ?></td>
@@ -140,7 +149,8 @@ if($rows['status']==0){
                   </tbody>
                 </table>
                  <hr>
-                <form method="post" id="approvereq" autocomplete="off">
+                 <span style="display:none;" id="orderid"><?php echo $orderid?></span>
+            <form method="post" id="approvereq" autocomplete="off" style="<?php echo $action; ?>">
             <div class="col-md-6">
               <div class="form-group">
                 <label>Token No. :</label>
@@ -159,6 +169,7 @@ if($rows['status']==0){
                 <label>Member Name :</label>
                 <input type="text" class="form-control" value="<?php echo $rows['member_name']?>" placeholder="Enter Member Name" name="membername" required readonly>
                 <input type="hidden" class="form-control" value="<?php echo $orderid?>"  name="oid" required readonly>
+                <input type="hidden" class="form-control" value="<?php echo $memberid?>"  name="memberid" required readonly>
               </div>
               <div class="form-group">
                 <label>Father Name :</label>

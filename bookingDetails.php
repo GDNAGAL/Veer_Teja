@@ -170,7 +170,7 @@ if($(this).val().length==10){
         //alert("Failed !!!")
         }else if(result==1){
           $('.payment-box').hide();
-          $('#mval').html('Mobile Already Registred With Us');
+          $('#mval').html('आपका पेमेंट वेरिफिकेशन चल रहा है |');
         }
       }
     });

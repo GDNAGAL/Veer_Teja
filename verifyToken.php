@@ -7,23 +7,19 @@ if($mobile == "" || $mobile == null){
   $resp = "";
 }else{
   include("veerTejaAdmin/includes/connection.php");
-  $member = mysqli_query($conn, "SELECT * FROM `tbl_members` where `mobile`='$mobile'");
-  $memberrows=mysqli_fetch_assoc($member);
-  $mr = mysqli_num_rows($member);
-  $memberid = $memberrows['id'];
-  if($mr==0){
-  $tokenreq = mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `mobile`='$mobile'");
+  $tokenreq = mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `mobile`='$mobile' order by `Id` DESC limit 1");
   $tokenreqrows=mysqli_fetch_assoc($tokenreq);
   $reqnum = mysqli_num_rows($tokenreq);
   if($reqnum==0){
-    $resp = "<div style='margin-top:40px; padding-top:0px'>
-    <div class='mb-4 text-center' style='margin-top:0px'>
-    <img src='asset/img/cross.png' width='75' height='75'>
-   </div>
-    <div class='text-center'>
-        <h1>No Record Found !</h1>
-        </div>
-  </div>";
+      $resp = "<div style='margin-top:40px; padding-top:0px'>
+      <div class='mb-4 text-center' style='margin-top:0px'>
+      <img src='asset/img/cross.png' width='75' height='75'>
+      </div>
+      <div class='text-center'>
+      <h1>No Record Found !</h1>
+      </div>
+      </div>";
+    
   }elseif($tokenreqrows['status']==0){
     $resp = "<div style='margin-top:40px; padding-top:0px'>
     <div class='mb-4 text-center' style='margin-top:0px'>
@@ -43,10 +39,20 @@ if($mobile == "" || $mobile == null){
         <h1>Your Request Rejected !</h1>
         </div>
   </div>";
-  }
-  }else{
-  $tokens = mysqli_query($conn, "SELECT * FROM `tbl_tokens` where `member_id`='$memberid'");
-  $tokennumrow = mysqli_num_rows($tokens);
+  }elseif($tokenreqrows['status']==1){
+    $resp = "<div style='margin-top:40px; padding-top:0px'>
+    <div class='mb-4 text-center' style='margin-top:0px'>
+    <svg xmlns='http://www.w3.org/2000/svg' class='text-success' width='75' height='75'
+                        fill='currentColor' class='bi bi-check-circle-fill' viewBox='0 0 16 16'>
+                        <path
+                            d='M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z' />
+                    </svg>
+   </div>
+    <div class='text-center'>
+        <h1>Congratulations ! Your Token No. Alloted</h1>
+        <a href='downloadTokens?mobile=$mobile'><button class='btn btn-success'>Download Tokens</button></a>
+        </div>
+  </div>";
   }
 }
 
@@ -135,30 +141,6 @@ if($mobile == "" || $mobile == null){
       <div class="tcnt">
         <?php 
       echo $resp;
-        while($tokenrow=mysqli_fetch_assoc($tokens)) {
-          if($tokenrow['type']=="PAID"){
-            $cl = "paid";
-            $ct ="freect";
-            $tx = "PAID";
-          }else{
-            $cl = "free";
-            $ct = "paidct";
-            $tx = "FREE";
-          }
-          echo "<div class='token-card $cl'>
-          <div class='head'>Token No. : $tokenrow[token_no] <span class='$ct' style='float:right'>$tx</span></div>
-          <div class='cnt'>
-            <div class='imgcnt'>
-            <img src='asset/img/v2.png'  width='110%' height='100%' style='background:white;'>
-            </div>
-            <div class='detal'>
-              Name : $memberrows[member_name]<br>
-              Mobile : $memberrows[mobile]<br>
-              City : $memberrows[district]
-            </div>
-          </div>
-        </div>";
-        }
         ?>
           
         </div>

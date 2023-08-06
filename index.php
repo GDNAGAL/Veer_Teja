@@ -106,19 +106,23 @@ $genralrows=mysqli_fetch_assoc($genral);
       <div class="col-12 col-md-6 col-lg-4 verify-ticket">
         <div class="product-card" style='height:auto;'>
               <iframe width="100%" height="400px" src="https://www.youtube.com/embed/Gbxiqswz1hA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-         
-          <!-- <h4>टिकट कैसे ख़रीदे!</h4>
-          <video class="w-100 mt-2 mb-2" controls>
-            <source src="movie.mp4" type="video/mp4">
-            <source src="movie.ogg" type="video/ogg">
-          </video>
-          -->
         </div>
       </div>
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="" style="padding:5px">
+        <form action="downloadTokens" method="get" autocomplete="off">
+        <div class="form-group">
+          <input type="number" style='border:1px solid #333' class="form-control" placeholder="अपना मोबाइल नंबर दर्ज करें " value="<?php echo $mobile; ?>" name="mobile" required>
+        </div>
+        <button style='margin-top:10px' type="submit">Download Token</button>
+        </form>
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>
-
+<br><br><br>
 <!--  -->
 <footer>
       <div class="container">

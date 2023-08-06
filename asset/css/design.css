@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lugrasimo&display=swap'); */
 *{
     margin: 0;
     padding: 0;
@@ -508,5 +508,6 @@ marquee{
     padding:10px;
     padding-left: 20px;
     /* color:white; */
-    line-height:20px
+    line-height:20px;
+    text-transform:capitalize;
   }
