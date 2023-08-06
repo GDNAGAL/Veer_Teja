@@ -193,7 +193,7 @@ if($memberrow['id']==""){
                   <?php
                   $sql= mysqli_query($conn, "SELECT * FROM `agents`");
                   while($row=mysqli_fetch_assoc($sql)){
-                    echo "<option value='$row[id]'>$row[agent_name]</option>";
+                    echo "<option value='$row[aid]'>$row[agent_name]</option>";
                   }
                   ?>
                 </select>

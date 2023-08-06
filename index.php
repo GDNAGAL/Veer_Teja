@@ -23,7 +23,7 @@ $genralrows=mysqli_fetch_assoc($genral);
     <meta property="og:description" content="Book Your Ticket Now ! लिंक को ओपन करे व ऑनलाइन टोकन  खरीदें " />
     <meta property="og:locale" content="en_US" />
     <meta name="twitter:card" content="Book Your Ticket Now ! लिंक को ओपन करे व ऑनलाइन टोकन  खरीदें" />
-<meta name="twitter:image" content="https://jaiveertejaluckydraw.in/asset/img/ogposter.jpg" />
+    <meta name="twitter:image" content="https://jaiveertejaluckydraw.in/asset/img/ogposter.jpg" />
     <!-- bootstrap include -->
     <link rel="stylesheet" href="./asset/css/bootstrap.css">
     <link rel="stylesheet" href="./asset/css/design.css">

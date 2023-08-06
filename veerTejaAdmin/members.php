@@ -75,6 +75,7 @@
                   <th>ID Type</th>
                   <th>ID Number</th>
                   <th>Agent</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -137,16 +138,17 @@ $.ajax({
            retrieve: true,
           //  destroy: true,
            columns: [
-             { 'data': 'member_name',
-              "render": function ( data, type, row, meta ) {
-                return '<a href="">'+data+'</a>';
-              }  },
+             { 'data': 'member_name'},
              { 'data': 'father_name' },
              { 'data': 'district' },
              { 'data': 'mobile'},
             { 'data': 'id_type' },
             { 'data': 'id_number' },
             { 'data': 'agent_name' },
+            { 'data': 'id',
+              "render": function ( data, type, row, meta ) {
+                return '<a href="memberview?mid='+data+'">View Member</a>';
+              }   },
           
             
           ]
