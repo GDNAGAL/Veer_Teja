@@ -1,4 +1,32 @@
-<div  class="contents">
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <meta name="keywords" content="About Us, Privacy, Terms and conditions Jai Veer Teja, Veer Teja, Lucky Draw, Jai Veer Teja Lucky Draw, Nagour,Bikaner,prizes, winners, results, lottery system, lottery result">
+    <meta name="description" content="Are you feeling lucky today? You're just a few clicks away from the chance to win fantastic prizes in our exciting Jai Veer Teja lucky draw! Jai Veer Teja Lucky Draw Extravaganza is your ticket to thrilling surprises and amazing rewards.
+"/>
+    <!-- bootstrap include -->
+    <link rel="stylesheet" href="./asset/css/bootstrap.css">
+    <link rel="stylesheet" href="./asset/css/design.css">
+    <link rel="stylesheet" href="./asset/css/mediasScreen.css">
+
+    <!-- font awesome link-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Javascript include -->
+    <script src="./asset/js/bootstrap.bundle.js"></script>
+    <script src="./asset/js/bootstrap.esm.js.map"></script>
+
+</head>
+<body>
+
+<?php require("includes/header.htm"); ?>
+<main>
+<section class="hero-section">
+<div  class="container"><br>
     <p >This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
     <h1 >Interpretation and Definitions</h1>
     <h2 >Interpretation</h2>
@@ -225,3 +253,32 @@
        <li >By visiting this page on our website: https://winday.in</li>
     </ul>
  </div>
+ </section>
+<br><br><br>
+<!--  -->
+<footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="social-link">
+             <a href="https://www.facebook.com/profile.php?id=100095074703306"><i class="fa-brands fa-facebook"></i></a>
+             <a href="https://www.instagram.com/veer_teja_lucky_draw/"><i class="fa-brands fa-instagram"></i></a>
+             <a href="https://youtube.com/"><i class="fa-brands fa-youtube"></i></a>
+             <a href="https://wa.me/918619372377" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </footer>
+
+
+
+    
+   </main>
+ <?php require("includes/footer.htm"); ?>
+
+
+    <script src="./asset/js/bottom-nav.js"></script>
+</body>
+</html>

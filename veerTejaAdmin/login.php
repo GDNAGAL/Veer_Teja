@@ -1,3 +1,10 @@
+<?php
+error_reporting(0);
+session_start();
+if($_SESSION['adminuser']==TRUE){
+  header('location:index.php');
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

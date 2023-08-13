@@ -44,9 +44,9 @@ $( document ).ready(function() {
           unloadbtn('#login_submit', 'Login');
           $("#validate").text("** Mobile or password Wrong !!")
         }else if(result==1){
-         console.log("Login Success")
+         //console.log("Login Success")
          unloadbtn('#login_submit', 'Login');
-         window.location.href = "/";
+         window.location.href = "index.php";
         }
       }
       });

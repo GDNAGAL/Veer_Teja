@@ -1,1 +1,1 @@
-ALTER TABLE `tbl_token_request` ADD `datetime` VARCHAR(40) NOT NULL AFTER `status`;
+ALTER TABLE `adminlog` ADD `try` INT(2) NOT NULL AFTER `epassword`;
