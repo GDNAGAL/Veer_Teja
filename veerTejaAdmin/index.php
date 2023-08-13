@@ -145,13 +145,14 @@
                     <th>Member_Name</th>
                     <th>Mobile No.</th>
                     <th>District</th>
+                    <th>Request Submit time</th>
                     <th>Status</th>
                     <th>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     <?php
-                   $sql = mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `status`=0 limit 5");
+                   $sql = mysqli_query($conn, "SELECT * FROM `tbl_token_request` where `status`=0");
                     while($row=mysqli_fetch_assoc($sql)){
                       $orderid = $row['Id']+2000;
                       echo "<tr>
@@ -159,6 +160,7 @@
                       <td>$row[member_name]</td>
                       <td>$row[mobile]</td>
                       <td>$row[district]</td>
+                      <td>$row[datetime]</td>
                       <td><span class='label label-warning'>Pending</span></td>
                       <td>
                         <div><a href='tokenrequestreview?orderid=$row[Id]'><button class='btn btn-success btn-flat'>Review</button></a></div>

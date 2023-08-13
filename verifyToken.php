@@ -63,7 +63,7 @@ if($mobile == "" || $mobile == null){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>जय वीर तेजा लक्की ड्रा, नागौर || Jai Veer Teja Lucky Draw</title>
+    <title>Verify Token</title>
      
     <!-- bootstrap include -->
     <link rel="stylesheet" href="./asset/css/bootstrap.css">

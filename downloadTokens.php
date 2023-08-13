@@ -22,7 +22,7 @@ if($mobile == "" || $mobile == null){
       </div>
       <div class='text-center'>
       <h1>No Token Found !</h1>
-      <a href='index'><button class='btn btn-primary'>Go To Home</button></a>
+      <a href='/'><button class='btn btn-primary'>Go To Home</button></a>
       </div>
       </div>";
   }

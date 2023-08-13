@@ -51,7 +51,7 @@ if($mobile=="" || $mobile == null){
                 <div class="text-center">
                     <h1>Thank You !</h1>
                     <p style='line-height:35px'>आपकी REQUEST सफलतापूर्वक भेज दी गई है | <br> पेमेंट वेरिफिकेशन के बाद आपको टोकन नं जारी कर दिया जायेगा <br> टोकन न. जारी होने के बाद आपको ईमेल प्राप्त हो जायेगा, कृपया अपनी ईमेल को चेक करते रहे <br> किसी भी प्रकार की समस्या के लिए हेल्पलाइन से सम्पर्क करे<br> <b>हेल्पलाइन नं. +91 8619372377, +91 8890903715</b></p>
-                    <a href="index"><button class="btn btn-primary">Go To Home</button></a>
+                    <a href="/"><button class="btn btn-primary">Go To Home</button></a>
                 </div>
             </div>
   </div>

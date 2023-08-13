@@ -86,7 +86,7 @@ input::-webkit-inner-spin-button {
                 ?>
               </div>
               <div class="form-group">
-                <label>Token No. (offline) :</label>
+                <label>Coupon No. (offline) :</label>
                 <input type="number" class="form-control" id="offtokeninput" value="" placeholder="Enter Token No." name="offtoken" >
                 <span id="terror" style='color:red'></span>
               </div>

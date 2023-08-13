@@ -11,8 +11,10 @@ if (isset($_POST['tokenbuy'])) {
 	$amountpaid = $_POST['amountpaid'];
 	$district = $_POST['district'];
 	$email = $_POST['email'];
+	date_default_timezone_set("Asia/Kolkata");
+    $dt = date("d/m/Y h:i:s A");
 
-$buytoken = mysqli_query($conn, "INSERT INTO `tbl_token_request`(`member_name`, `father_name`, `mobile`, `district`, `refno`, `offerid`, `amoutpaid`, `email`, `status`) VALUES ('$fullname','$fathername','$mobile','$district','$trno','$offerid','$amountpaid','$email',0)");
+$buytoken = mysqli_query($conn, "INSERT INTO `tbl_token_request`(`member_name`, `father_name`, `mobile`, `district`, `refno`, `offerid`, `amoutpaid`, `email`, `status`, `datetime`) VALUES ('$fullname','$fathername','$mobile','$district','$trno','$offerid','$amountpaid','$email',0,'$dt')");
 if ($buytoken==True) {
 	echo 1;
 }else{

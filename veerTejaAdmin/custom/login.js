@@ -46,7 +46,7 @@ $( document ).ready(function() {
         }else if(result==1){
          console.log("Login Success")
          unloadbtn('#login_submit', 'Login');
-         window.location.href = "index";
+         window.location.href = "/";
         }
       }
       });

@@ -65,7 +65,7 @@ $price = $findamount['price'];
                         <input type="text" class="form-control" id="" placeholder="Father Name" name="fathername" required>
                       </div>
                       <div class="mb-3">
-                        <input type="email" class="form-control" id="" placeholder="Enter Email " name="email" required>
+                        <input type="email" class="form-control" id="" placeholder="Enter Email " name="email" >
                       </div>
                       <div class="mb-3">
                         <select  id="" class="form-control" name="district" required>
@@ -107,8 +107,9 @@ $price = $findamount['price'];
                       </div>
                       <div class="payment-box" style='display:none'>
                     <h3>Pay <span style='color:#EF194C'>Rs <?php echo $price; ?></span></h3>
+                    <p style='color:red'>नोट :<br>नीचें दिए गये qr Code को Scan करके अपने अमाउंट को pay करें व पेमेंट सफल होने के बाद UTR या Transction Id को नीचे दिए गए बॉक्स में भरे  </p>
                     <div class="border rounded-4 p-2 d-flex justify-content-center">
-                    <img src="./asset/img/qr.png" alt=""  width="120px" height="120px">
+                    <img src="./asset/img/<?php echo $genralrows['qr'] ?>" alt=""  width="120px" height="120px">
                     <div class="justify-content-center m-4">
                     <input style='text-transform:lowercase; margin:0px;' class="form-control" id="copytext" type="text" value="<?php echo $genralrows['upi'] ?>" readonly>
                     <button type="button" id='copy' class='copy'>Copy UPI Id</button>

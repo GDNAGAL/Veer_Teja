@@ -14,11 +14,14 @@ if($orderid=="" || $orderid == null || $r == 0){
 if($rows['status']==0){
   $status = "<span class='label label-warning'>Pending</span>";
   $action = "";
+  $abtn="<a href='getData/reject.php?orderid=$orderid'><button type='button' class='btn btn-flat btn-danger' id='reject' name='reject'>Reject</button></a>";
 }elseif($rows['status']==1){
   $status = "<span class='label label-success'>Approved</span>";
   $action = "display:none";
+  $abtn="";
 }elseif($rows['status']==2){
   $status = "<span class='label label-danger'>Rejected</span>";
+  $abtn ="<a href='getData/reject.php?unorderid=$orderid'><button type='button' class='btn btn-flat btn-primary' id='reject' name='reject'>UNDO Reject</button></a>";
   $action = "display:none";
 }
 
@@ -135,16 +138,20 @@ if($memberrow['id']==""){
                   <tr>
                     <th>Order ID</th>
                     <th>Transaction Id</th>
+                    <th>Time</th>
                     <th>Amount</th>
                     <th>Status</th>
+                    <th class='text-center'>Action</th>
                   </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td><?php echo $rows['Id']+2000;?></td>
                       <td><?php echo $rows['refno']; ?></td>
-                      <td><?php echo $rows['amoutpaid']; ?></td>
+                      <td><?php echo $rows['datetime'];?></td>
+                      <td style='font-size:20px; font-weight:bold;'>₹ <?php echo $rows['amoutpaid']; ?></td>
                       <td><?php echo $status; ?></td>
+                      <td class='text-center' style='width:150px'><?php echo $abtn; ?></td>
                     </tr>
                   </tbody>
                 </table>
@@ -227,8 +234,7 @@ if($memberrow['id']==""){
               <div class="form-group">
               <label>.</label><br>
                 <button type="submit" class="btn btn-flat btn-success" id='acbtn' name="accept">Accept</button>
-                <button type="button" class="btn btn-flat btn-danger" id='reject' name="reject">Reject</button>
-              </div>
+                </div>
               <!-- /.form-group -->
             </div>
             <!-- /.col -->
