@@ -177,6 +177,7 @@ if($memberrow['id']==""){
                 <input type="text" class="form-control" value="<?php echo $rows['member_name']?>" placeholder="Enter Member Name" name="membername" required readonly>
                 <input type="hidden" class="form-control" value="<?php echo $orderid?>"  name="oid" required readonly>
                 <input type="hidden" class="form-control" value="<?php echo $memberid?>"  name="memberid" required readonly>
+                <input type="hidden" class="form-control" value="<?php echo $rows['email']?>"  name="email" required readonly>
               </div>
               <div class="form-group">
                 <label>Father Name :</label>

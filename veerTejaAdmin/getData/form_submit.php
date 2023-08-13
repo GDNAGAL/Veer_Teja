@@ -1,7 +1,37 @@
 <?php
 include("../includes/connection.php");
 include("../includes/session.php");
-// error_reporting(0);
+error_reporting(0);
+
+//send mail
+function sendmail($mail, $mobile, $name){
+// $msg = "First line of text\nSecond line of text";
+// mail($mail,"Your Token Request Approved - Jai Veer Teja Lucky Draw",$msg);
+
+$headers  = "MIME-Version: 1.0" . "\r\n";
+$headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+$headers  .= "From: NO-REPLY<no-reply@jaiveertejaluckydraw.in>" . "\r\n";
+$subject = "Jai Veer Teja Lucky Draw - Token Confirmation";
+$message = "<html>
+                <body>
+                    <h3>Hi $name</h3>
+                    <h3>
+					Congratulations ! We recieved Token Request from you. Please Click below button to Download Your Tokens.
+                    </h3>
+                    <center><br><br>
+					<a href='http://jaiveertejaluckydraw.in/downloadTokens?mobile=$mobile'><button style='padding:15px 10px; border:none; background-color:green;color:white;'>Download Your Token</button></a>
+					</center>
+                    <h3>
+                    Thanks,<br>
+                    Jai Veer Teja Team.
+                    </h3>
+                </body>
+            </html>";
+mail( $mail, $subject, $message, $headers );
+}
+
+
+
 //Add Agent 
 if (isset($_POST['addagent'])) {
 	$agentname = $_POST['agent_name'];
@@ -125,6 +155,7 @@ if (isset($_POST['accept'])) {
 	$oid = $_POST['oid'];
 	$offerchhose = $_POST['offerchoose'];
 	$memberno = $_POST['memberid'];
+	$email = $_POST['email'];
 
 	$getofferdetails=mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbl_token_offer` WHERE `Id` = $offerchhose"));
 	$free = $getofferdetails['free'];
@@ -157,7 +188,9 @@ if($free!==0){
 	}
 }
 mysqli_query($conn, "UPDATE `tbl_token_request` SET `status`=1 Where `Id`= $oid");
+sendmail($email, $mobile, $membername);
 if ($addpaidtoken==True) {
+
 	echo 1;
 }else{
 	echo 0;

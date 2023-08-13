@@ -37,5 +37,17 @@ if (mysqli_num_rows($mobileval)>0) {
 
 }
 
+//transactionid Validata
+if (isset($_POST['trid'])) {
+	$trid = $_POST['trid'];
+
+$trval = mysqli_query($conn, "SELECT `refno` FROM `tbl_token_request` where `refno`='$trid' AND `status`<>0");
+if (mysqli_num_rows($trval)>0) {
+	echo 1;
+}else{
+	echo 0;
+}
+
+}
 
 ?>

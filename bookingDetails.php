@@ -32,12 +32,17 @@ $price = $findamount['price'];
     <!-- Javascript include -->
     <script src="./asset/js/bootstrap.bundle.js"></script>
     <script src="./asset/js/bootstrap.esm.js.map"></script>
+
  <style>
   input{
     text-transform: capitalize;
   }
   input[type="email"]{
     text-transform: lowercase !important;
+  }
+  #bookandsave:disabled{
+   background:#999;
+   cursor: not-allowed;
   }
  </style>
 </head>
@@ -116,7 +121,8 @@ $price = $findamount['price'];
                     </div>
                     </div>
                     <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="" placeholder="Enter Transaction No." name="trno" required>
+                        <input type="text" class="form-control" id="trno" placeholder="Enter Transaction No." name="trno" required>
+                        <span id="tval" style='color:red; font-size:12px'></span>
                         <input type="hidden" value="<?php echo $oid; ?>" name="offerid" required>
                         <input type="hidden" value="<?php echo $price; ?>" name="amountpaid" required>
                     </div>
@@ -124,7 +130,7 @@ $price = $findamount['price'];
                     <input id="checkbox" type="checkbox" style="margin-left:10px" required/>
                     <label for="checkbox"> I agree to these <a href="#">Terms and Conditions</a>.</label>
                     </div>
-                    <button type="submit" id="bookandsave" class="save" name="tokenbuy">Book Now</button>
+                    <button type="submit" id="bookandsave" class="save" name="tokenbuy" disabled>Book Now</button>
 
                  </form>
                 </div>
@@ -147,6 +153,35 @@ $price = $findamount['price'];
 <script src="./asset/js/bottom-nav.js"></script>
 <script>
 $(document).ready(function(){
+//validate transaction id
+$('#trno').on('keyup', function(){
+  $("#bookandsave").attr("disabled",true);
+  if($(this).val().length>7){
+  $('#tval').html('');
+  let trid = $(this).val().trim();
+  const formData = new FormData();
+  formData.append("trid", trid);
+  $.ajax({
+    type: "POST", 
+    url: "form_submit.php",              
+    data: formData, 
+    contentType: false,       
+    cache: false,             
+    processData:false,
+    success: function(result){
+      if(result==0){
+        $("#bookandsave").attr("disabled",false);
+        //alert("Failed !!!")
+        }else if(result==1){
+          $("#bookandsave").attr("disabled",true);
+          $('#tval').html('कृपया सही UTR एंव Transaction Id भरे |');
+        }
+      }
+    });
+
+  }
+})
+
 //validate mobile
 $('#mobile').on('keyup', function(){
   $('.payment-box').hide();
