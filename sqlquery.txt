@@ -1,1 +1,0 @@
-ALTER TABLE `adminlog` ADD `try` INT(2) NOT NULL AFTER `epassword`;

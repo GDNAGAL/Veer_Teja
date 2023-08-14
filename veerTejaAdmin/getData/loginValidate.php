@@ -12,7 +12,8 @@ if(isset($_POST['login'])){
 	date_default_timezone_set("Asia/Kolkata");
     $dt = date("d/m/Y h:i:s A");
     $crediential = "Login Failed || ".$myusername." || ".$mypassword ;
-
+    
+	
 
     //validate username and password
     //$sql = mysqli_query($conn,"SELECT * FROM `adminlog` WHERE eusername = '$euser' and epassword = '$epass'");
@@ -22,7 +23,11 @@ if(isset($_POST['login'])){
 	if($rowcount==1){
 		//match password
 		if($logrow['epassword']==$epass){
+			//genrate session cookie
+			$actssin = md5(rand());
+			setcookie('ACTSSIN', $actssin, time() + (60 * 30), "/"); // 60 * 30 = 30min
 			mysqli_query($conn,"INSERT INTO `log`(`ipadd`, `mesage`, `datetime`) VALUES ('$ip','Login Session Start','$dt')");
+			mysqli_query($conn,"UPDATE `adminlog` SET `active_session`='$actssin' WHERE eusername = '$euser'");
 			session_start();
 			$_SESSION['adminuser']=$myusername;
 			echo 1;
