@@ -1,7 +1,7 @@
 <?php
 include("../includes/connection.php");
 include("../includes/session.php");
-error_reporting(0);
+//error_reporting(0);
 
 //send mail
 function sendmail($mail, $mobile, $name){
@@ -156,6 +156,7 @@ if (isset($_POST['accept'])) {
 	$offerchhose = $_POST['offerchoose'];
 	$memberno = $_POST['memberid'];
 	$email = $_POST['email'];
+	$tid = $_POST['tid'];
 
 	$getofferdetails=mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM `tbl_token_offer` WHERE `Id` = $offerchhose"));
 	$free = $getofferdetails['free'];
@@ -187,7 +188,7 @@ if($free!==0){
 		$tokenno = $tokenno+1;
 	}
 }
-mysqli_query($conn, "UPDATE `tbl_token_request` SET `status`=1 Where `Id`= $oid");
+mysqli_query($conn, "UPDATE `tbl_token_request` SET `status`=1, `refno`='$tid' Where `Id`= $oid");
 sendmail($email, $mobile, $membername);
 if ($addpaidtoken==True) {
 
@@ -265,5 +266,42 @@ if ($addoffer==True) {
 }
 
 }
+
+
+
+//transactionid Validata
+if (isset($_POST['trid'])) {
+	$trid = $_POST['trid'];
+
+$trval = mysqli_query($conn, "SELECT `refno`, `Id`, `mobile` FROM `tbl_token_request` where `refno`='$trid' AND `status`<>2 limit 1");
+$row = mysqli_fetch_assoc($trval);
+if (mysqli_num_rows($trval)==1) {
+	echo "<span style='color:red'>Duplicate Found (Id : $row[Id]) || (Mobile : $row[mobile])</span>";
+}else{
+	echo 0;
+}
+
+}
+
+
+//Update Mobile Number
+if (isset($_POST['updatemobile'])) {
+	$newmobile = $_POST['newmobileno'];
+	$memberid = $_POST['memberid'];
+
+$mrval = mysqli_query($conn, "SELECT `mobile` FROM `tbl_token_request` where `mobile`=$newmobile");
+if (mysqli_num_rows($mrval)==0) {
+	$msrval = mysqli_query($conn, "SELECT `mobile` FROM `tbl_members` where `mobile`=$newmobile");
+	if (mysqli_num_rows($msrval)==0) {
+        mysqli_query($conn, "UPDATE `tbl_members` SET `mobile`='$newmobile' where `id`=$memberid");
+		echo "Success";
+	}else{
+		echo "Mobile No. Already Registred by Member";
+	}
+}else{
+	echo "One Request Already exit With Same No.";
+}
+}
+
 
 ?>

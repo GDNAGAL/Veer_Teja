@@ -90,12 +90,32 @@ if($memberrow['id']==""){
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-      <div class="row">
-  <div class="col-md-3">
+<div class="row">
+  <div class="col-md-5">
 
-    <!-- Profile Image -->
-    <div class="box box-primary">
-      <div class="box-body box-info">
+<!-- Profile Image -->
+<div class="box box-primary">
+  <div class="box-body box-info">
+    <input style='<?php echo $action; ?>' type="text" id='trid' placeholder="UTR OR Transaction Id">
+    <button style='<?php echo $action; ?>' id='tvarify' >Verify</button><br>
+    <span id="tvalerr"></span><br>
+    <br>
+    <h5><b>ScreenShot :</b></h5>
+    <img src="dist/screenshot/<?php echo $rows['screenshot']; ?>" alt="" width="100%">
+    <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
+  </div>
+  <!-- /.box-body -->
+</div>
+<!-- /.box -->
+</div>
+  <!-- /.col -->
+  <div class="col-md-7">
+    <!-- TABLE: LATEST ORDERS -->
+ <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Order Details</h3>
+            </div>
+            <div class="box-body box-info">
         <img class="profile-user-img img-responsive img-circle" src="dist/img/avatar5.png" alt="User profile picture">
 
         <h3 class="profile-username text-center text-capitalize"><?php echo $rows['member_name']; ?></h3>
@@ -116,20 +136,8 @@ if($memberrow['id']==""){
             <b>District</b> <a class="pull-right text-capitalize"><?php echo $rows['district']; ?></a>
           </li>
         </ul>
-
         <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
       </div>
-      <!-- /.box-body -->
-    </div>
-    <!-- /.box -->
-  </div>
-  <!-- /.col -->
-  <div class="col-md-9">
-    <!-- TABLE: LATEST ORDERS -->
- <div class="box box-info">
-            <div class="box-header with-border">
-              <h3 class="box-title">Order Details</h3>
-            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <div class="table-responsive">
@@ -178,6 +186,7 @@ if($memberrow['id']==""){
                 <input type="hidden" class="form-control" value="<?php echo $orderid?>"  name="oid" required readonly>
                 <input type="hidden" class="form-control" value="<?php echo $memberid?>"  name="memberid" required readonly>
                 <input type="hidden" class="form-control" value="<?php echo $rows['email']?>"  name="email" required readonly>
+                <input type="hidden" class="form-control" id='tinput' value=""  name="tid" required readonly>
               </div>
               <div class="form-group">
                 <label>Father Name :</label>
@@ -297,5 +306,41 @@ if($memberrow['id']==""){
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="custom/data.js"></script>
+
+<script>
+$(document).ready(function(){
+  //validate transactionn Id
+$('#tvarify').on('click', function(){
+  let trid = $('#trid').val();
+  const formData = new FormData();
+  formData.append("trid", trid);
+  $('#tvalerr').html('');
+
+  $.ajax({
+    type: "POST", 
+    url: "getData/form_submit.php",              
+    data: formData, 
+    contentType: false,       
+    cache: false,             
+    processData:false,
+    success: function(result){
+      if(result==0){
+        $('#tvalerr').html("<span style='color:green'>Not Duplicate Found-Match with Your Bank Statement.</span>");
+        $('#tinput').val(trid);
+        //alert("Failed !!!")
+        }else{
+          $('#tvalerr').html(result);
+          $('#tinput').val('');
+        }
+      }
+    });
+
+})
+})
+
+</script>
+
+
+
 </body>
 </html>

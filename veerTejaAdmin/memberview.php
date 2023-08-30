@@ -83,12 +83,13 @@ if($memberrow['id']==""){
       <div class="box-body box-info">
         <img class="profile-user-img img-responsive img-circle" src="dist/img/avatar5.png" alt="User profile picture">
 
-        <h3 class="profile-username text-center text-capitalize"><?php echo $memberrow['member_name']; ?></h3>
-
-        <p class="text-muted text-center">Veer Teja Lucky Draw Member</p>
+        <h3 class="profile-username text-center text-capitalize"><?php echo $memberrow['member_name']; ?><br>
+        <span id='changemobile' style='color:blue; font-size:12px; cursor:pointer;'>Change Mobile No.</span></h3>
 
         <ul class="list-group list-group-unbordered">
           <li class="list-group-item">
+
+            <input type="hidden" id='mid' value="<?php echo $mid;?>">
             <b>Father Name</b> <a class="pull-right text-capitalize"><?php echo $memberrow['father_name']; ?></a>
           </li>
           <li class="list-group-item">
@@ -106,6 +107,7 @@ if($memberrow['id']==""){
           <li class="list-group-item">
             <b>Agent</b> <a class="pull-right text-capitalize"><?php echo $memberrow['agent_name']; ?></a>
           </li>
+          
         </ul>
 
         <!-- <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a> -->
@@ -209,5 +211,34 @@ if($memberrow['id']==""){
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="custom/data.js"></script>
+<!-- page script -->
+<script>
+
+ $( document ).ready(function() {
+  // var table = $('#membertables').DataTable();
+$('#changemobile').on('click',function(){
+  let newmobile = prompt("Enter New Number");
+  //alert(newmobile.trim())
+  let data = new FormData();
+    data.append("newmobileno", newmobile.trim());
+    data.append("memberid", $('#mid').val().trim());
+    data.append("updatemobile","");
+    $.ajax({
+      type: "POST", 
+      url: "getData/form_submit.php",              
+      data: data, 
+      contentType: false,       
+      cache: false,             
+      processData:false,
+      success: function(result){
+      alert(result);
+      location.reload(true);
+      }
+    });
+})
+})
+
+
+</script>
 </body>
 </html>

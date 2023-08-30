@@ -65,14 +65,14 @@
             <!-- /.box-header -->
 
             <div class="box-body">
-              <table id="membertables" class="table table-bordered table-striped" style='text-transform:capitalize;'>
+              <table id="membertables" class="table table-bordered table-striped text-center" style='text-transform:capitalize;'>
                 <thead>
                 <tr>
                   <th>Token No.</th>
-                  <th>Member Name</th>
                   <th>Amount</th>
                   <th>TAG</th>
                   <th>Agent</th>
+                  <th>View Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -135,11 +135,7 @@ $.ajax({
            retrieve: true,
           //  destroy: true,
            columns: [
-             { 'data': 'token_no',
-              "render": function ( data, type, row, meta ) {
-                return '<a href="">'+data+'</a>';
-              }  },
-             { 'data': 'member_id' },
+             { 'data': 'token_no'},
              { 'data': 'amount' },
              { 'data': 'type',
               "render": function ( data, type, row, meta ) {
@@ -150,6 +146,10 @@ $.ajax({
                 }
               }  },
             { 'data': 'agent' },
+            { 'data': 'member_id',
+              "render": function ( data, type, row, meta ) {
+                return '<a href="memberview?mid='+data+'">View Token</a>';
+              }   },
           
             
           ]
