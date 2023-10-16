@@ -1,0 +1,28 @@
+@media (max-width: 767px) {
+    .navigation {
+      left: -60px;
+    }
+    .navigation.active {
+      left: 0px;
+      width: 100%;
+    }
+    .bodypart{
+      width: 100%;
+      margin-left: 0px;
+    }
+    .bodypart.active{
+      margin-left: 0px;
+      width: 100%;
+    }
+    .card{
+      margin-bottom: 10px !important;
+    }
+    .col-12{
+      padding: 0px !important;
+    }
+    .customtoast{
+    width: 80%;
+    margin-left: -40%;
+    }
+
+  }

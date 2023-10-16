@@ -58,7 +58,7 @@ $price = $findamount['price'];
 
             <div class="col-12">
                 <p class="booktoken">टोकन बुक करने के लिए अपनी जानकारी भरें :--</p>
-                <form autocomplete="off" method="POST" id="tokenbuy">
+                <form autocomplete="off" method="POST" id="tokenbuy" enctype="multipart/form-data">
                       <div class="mb-3">
                         <input type="number" class="form-control" id="mobile" placeholder="Mobile No." name="mobile" required>
                         <span id="mval" style='color:red; font-size:12px'></span>
@@ -112,7 +112,9 @@ $price = $findamount['price'];
                       </div>
                       <div class="payment-box" style='display:none'>
                     <h3>Pay <span style='color:#EF194C'>Rs <?php echo $price; ?></span></h3>
-                    <p style='color:red'>नोट :<br>नीचें दिए गये qr Code को Scan करके अपने अमाउंट को pay करें व पेमेंट सफल होने के बाद UTR या Transction Id को नीचे दिए गए बॉक्स में भरे  </p>
+                    <p style='color:red'>नोट :<br>1. नीचें दिए गये qr Code को Scan करें |<br>
+                    2. अपने अमाउंट को pay करें | <br>
+                    3. पेमेंट सफल होने के बाद पेमेंट का स्क्रीनशॉट अपलोड करें | </p>
                     <div class="border rounded-4 p-2 d-flex justify-content-center">
                     <img src="./asset/img/<?php echo $genralrows['qr'] ?>" alt=""  width="120px" height="120px">
                     <div class="justify-content-center m-4">
@@ -121,16 +123,18 @@ $price = $findamount['price'];
                     </div>
                     </div>
                     <div class="mb-3 mt-3">
-                        <input type="text" class="form-control" id="trno" placeholder="Enter Transaction No." name="trno" required>
+                      <span style='color:green'>Upload Payment Screenshot : </span>
+                        <input type="file" class="form-control" id="photo" name="screenshot" accept="image/*" required>
                         <span id="tval" style='color:red; font-size:12px'></span>
                         <input type="hidden" value="<?php echo $oid; ?>" name="offerid" required>
-                        <input type="hidden" value="<?php echo $price; ?>" name="amountpaid" required>
+                        <input type="hidden" value="<?php echo $price; ?>" name="amountpaid" required><br>
+                        <img id="imgPreview" src="#" alt="" height="100px"/>
                     </div>
                     <div class="mb-3 mt-3">
                     <input id="checkbox" type="checkbox" style="margin-left:10px" required/>
                     <label for="checkbox"> I agree to these <a href="#">Terms and Conditions</a>.</label>
                     </div>
-                    <button type="submit" id="bookandsave" class="save" name="tokenbuy" disabled>Book Now</button>
+                    <button type="submit" id="bookandsave" class="save" name="tokenbuy">Book Now</button>
 
                  </form>
                 </div>
@@ -153,34 +157,19 @@ $price = $findamount['price'];
 <script src="./asset/js/bottom-nav.js"></script>
 <script>
 $(document).ready(function(){
-//validate transaction id
-$('#trno').on('keyup', function(){
-  $("#bookandsave").attr("disabled",true);
-  if($(this).val().length>7){
-  $('#tval').html('');
-  let trid = $(this).val().trim();
-  const formData = new FormData();
-  formData.append("trid", trid);
-  $.ajax({
-    type: "POST", 
-    url: "form_submit.php",              
-    data: formData, 
-    contentType: false,       
-    cache: false,             
-    processData:false,
-    success: function(result){
-      if(result==0){
-        $("#bookandsave").attr("disabled",false);
-        //alert("Failed !!!")
-        }else if(result==1){
-          $("#bookandsave").attr("disabled",true);
-          $('#tval').html('कृपया सही UTR एंव Transaction Id भरे |');
+//screenshot preview
+$('#photo').change(function(){
+        const file = this.files[0];
+        console.log(file);
+        if (file){
+          let reader = new FileReader();
+          reader.onload = function(event){
+            console.log(event.target.result);
+            $('#imgPreview').attr('src', event.target.result);
+          }
+          reader.readAsDataURL(file);
         }
-      }
-    });
-
-  }
-})
+});
 
 //validate mobile
 $('#mobile').on('keyup', function(){
